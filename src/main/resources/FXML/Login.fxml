@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.progetto_oo.Controllers.Controller">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #317fa2;" BorderPane.alignment="CENTER">
          <children>
@@ -27,9 +27,24 @@
    <right>
       <AnchorPane prefHeight="400.0" prefWidth="404.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="Username" layoutX="68.0" layoutY="106.0" prefHeight="26.0" prefWidth="262.0" promptText="Username" />
-            <PasswordField fx:id="Password" layoutX="67.0" layoutY="173.0" prefHeight="26.0" prefWidth="265.0" promptText="Password" />
-            <Button fx:id="Login" layoutX="161.0" layoutY="317.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="78.0" style="-fx-background-color: #317fa2;" text="Login" textFill="WHITE" />
+            <TextField fx:id="Username" layoutX="68.0" layoutY="106.0" prefHeight="26.0" prefWidth="262.0" />
+            <PasswordField fx:id="Password" layoutX="67.0" layoutY="187.0" prefHeight="26.0" prefWidth="265.0" />
+            <Button fx:id="Login" layoutX="161.0" layoutY="317.0" mnemonicParsing="false" onAction="#LoginOnAction" prefHeight="24.0" prefWidth="78.0" style="-fx-background-color: #317fa2;" text="Login" textFill="WHITE" />
+            <Text layoutX="67.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" textAlignment="CENTER">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="68.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" textAlignment="CENTER">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="avvisoErrore" fill="RED" layoutX="147.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="105.5999755859375">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </right>
