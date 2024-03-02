@@ -10,7 +10,7 @@ public class Connessione {
     // Metodo per ottenere una connessione al database
     public static Connection getConnection() throws SQLException {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
             return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "inazumajapan");
 
         } catch (ClassNotFoundException e) {
