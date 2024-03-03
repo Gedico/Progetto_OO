@@ -7,21 +7,21 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Home extends Application {
+public class Profilo extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        creaFinestraHome();
+        creaFinestraProfilo();
 
     }
 
-    public void creaFinestraHome() throws IOException {
+    public void creaFinestraProfilo() throws IOException {
         // Creazione della finestra "Home"
-        Stage homeStage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/FXML/Homepage.fxml"));
+        Stage ProfiloStage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/FXML/Profilo.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 850, 630);
-        homeStage.setTitle("Finestra Home");
-        homeStage.setScene(scene);
-        homeStage.show();
+        ProfiloStage.setTitle("Profilo utente");
+        ProfiloStage.setScene(scene);
+        ProfiloStage.show();
     }
 }

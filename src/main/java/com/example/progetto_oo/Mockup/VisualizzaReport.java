@@ -7,20 +7,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Home extends Application {
+public class VisualizzaReport extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        creaFinestraHome();
+        creaFinestraVisualizzaReport();
 
     }
 
-    public void creaFinestraHome() throws IOException {
-        // Creazione della finestra "Home"
+    public void creaFinestraVisualizzaReport() throws IOException {
+        // Creazione della finestra VisualizzaReport
         Stage homeStage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/FXML/Homepage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/FXML/VisualizzaReport.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 850, 630);
-        homeStage.setTitle("Finestra Home");
+        homeStage.setTitle("Visualizza Report");
         homeStage.setScene(scene);
         homeStage.show();
     }
