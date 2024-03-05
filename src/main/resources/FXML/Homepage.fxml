@@ -1,36 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="883.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.progetto_oo.Controllers.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="883.0" stylesheets="@Stili/LoginStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.progetto_oo.Controllers.HomeController">
    <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #317fa2;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="left-form" stylesheets="@Stili/HomeStyle.css" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="WHITE" layoutX="29.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unina" textAlignment="CENTER" wrappingWidth="141.33670806884766">
-               <font>
-                  <Font name="Georgia" size="36.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" layoutX="29.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delivery" textAlignment="CENTER" wrappingWidth="141.33670806884766">
-               <font>
-                  <Font name="Georgia" size="36.0" />
-               </font>
-            </Text>
             <Line endX="100.0" layoutX="100.0" layoutY="437.0" startX="-100.0" stroke="WHITE" />
-            <Button fx:id="GoLogout" layoutX="38.0" layoutY="537.0" mnemonicParsing="false" onAction="#GoLogoutOnAction" prefHeight="26.0" prefWidth="125.0" style="-fx-border-color: ffffff; -fx-background-color: ffffff;" text="Logout" />
-            <Button fx:id="GoProfilo" layoutX="38.0" layoutY="469.0" mnemonicParsing="false" onAction="#GoProfiloOnAction" prefHeight="26.0" prefWidth="125.0" style="-fx-border-color: ffffff; -fx-background-color: ffffff;" text="Profilo" />
-            <Button fx:id="GoVisualizzaReport" layoutX="37.0" layoutY="335.0" mnemonicParsing="false" onAction="#GoVisualizzaReportOnAction" prefHeight="26.0" prefWidth="125.0" style="-fx-border-color: ffffff; -fx-background-color: ffffff;" text="Visualizza Report" />
-            <Button fx:id="GoCreaSpedizione" layoutX="38.0" layoutY="272.0" mnemonicParsing="false" onAction="#GoCreaSpedizioneOnAction" prefHeight="26.0" prefWidth="125.0" style="-fx-border-color: ffffff; -fx-background-color: ffffff;" text="Crea spedizione" />
-            <Button fx:id="GoVisualizzaOrdini" layoutX="38.0" layoutY="207.0" mnemonicParsing="false" onAction="#GoVisualizzaOrdiniOnAction" prefHeight="26.0" prefWidth="125.0" style="-fx-border-color: ffffff; -fx-background-color: ffffff;" text="Visualizza ordini" />
+            <Button fx:id="GoLogout" layoutX="38.0" layoutY="537.0" mnemonicParsing="false" onAction="#GoLogoutOnAction" prefHeight="26.0" prefWidth="125.0" text="Logout" />
+            <Button fx:id="GoProfilo" layoutX="38.0" layoutY="469.0" mnemonicParsing="false" onAction="#GoProfiloOnAction" prefHeight="26.0" prefWidth="125.0" text="Profilo" />
+            <Button fx:id="GoVisualizzaReport" layoutX="37.0" layoutY="335.0" mnemonicParsing="false" onAction="#GoVisualizzaReportOnAction" prefHeight="26.0" prefWidth="125.0" text="Visualizza Report" />
+            <Button fx:id="GoCreaSpedizione" layoutX="38.0" layoutY="272.0" mnemonicParsing="false" onAction="#GoCreaSpedizioneOnAction" prefHeight="26.0" prefWidth="125.0" text="Crea spedizione" />
+            <Button fx:id="GoVisualizzaOrdini" layoutX="38.0" layoutY="207.0" mnemonicParsing="false" onAction="#GoVisualizzaOrdiniOnAction" prefHeight="26.0" prefWidth="125.0" text="Visualizza ordini" />
+            <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="62.0" layoutY="122.0" size="8EM" />
+            <Text fill="WHITE" layoutX="15.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benvenuto Operatore" textAlignment="CENTER">
+               <font>
+                  <Font name="Georgia" size="18.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="57.0" layoutY="69.0" prefHeight="127.0" prefWidth="232.0" style="-fx-background-color: #317fa2; -fx-border-color: #000000;">
+               <children>
+                  <Text fill="WHITE" layoutX="12.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ordini gestiti Oggi" textAlignment="CENTER" wrappingWidth="204.53677368164062">
+                     <font>
+                        <Font name="Georgia" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="OrdiniGestiti" fill="WHITE" layoutX="81.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="67.20001220703125">
+                     <font>
+                        <Font name="Georgia" size="36.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Button fx:id="Avvia" layoutX="289.0" layoutY="14.0" mnemonicParsing="false" onAction="#AvviaOnAction" prefHeight="26.0" prefWidth="104.0" text="Avvia" />
+            <Pane layoutX="400.0" layoutY="69.0" prefHeight="128.0" prefWidth="226.0" style="-fx-background-color: #317fa2; -fx-border-color: #000000;">
+               <children>
+                  <Text fill="WHITE" layoutX="19.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ordini Da Gestire" textAlignment="CENTER">
+                     <font>
+                        <Font name="Georgia" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="ordiniDaGestire" fill="WHITE" layoutX="71.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="84.80007934570312">
+                     <font>
+                        <Font name="Georgia" size="36.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutX="57.0" layoutY="270.0" prefHeight="331.0" prefWidth="572.0" style="-fx-background-color: #317fa2;">
+               <children>
+                  <TableView layoutX="14.0" layoutY="53.0" prefHeight="262.0" prefWidth="546.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Nome" />
+                      <TableColumn prefWidth="75.0" text="cognome" />
+                        <TableColumn prefWidth="75.0" text="cognome" />
+                        <TableColumn prefWidth="106.40005493164062" text="cognome" />
+                        <TableColumn prefWidth="72.0" text="cognome" />
+                        <TableColumn prefWidth="142.39999389648438" text="cognome" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+         </children></AnchorPane>
    </center>
 </BorderPane>

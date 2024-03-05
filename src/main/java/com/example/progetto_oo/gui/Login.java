@@ -1,4 +1,4 @@
-package com.example.progetto_oo;
+package com.example.progetto_oo.gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
