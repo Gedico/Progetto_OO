@@ -1,25 +1,83 @@
 .left-form{
-    -fx-background-color: linear-gradient(to right, #053e8e,#336158);
+    -fx-background-color: linear-gradient(to right, #053e8e,#330058);
     -fx-border-color: #000000;
-    -fx-border-width: 1px,0px,1px,1px;
+    -fx-border-width: 1px,0px,1px,100px;
+}
+
+.right-form{
+    -fx-background-color: #ffffff;
+    -fx-border-color: TRANSPARENT;
+
 }
 .button{
-    -fx-background-color: linear-gradient(to right, #053e8e,#336158);
-    -fx-border-color: #ffffff;
-    -fx-border-width: 2px;
-    -fx-border-radius: 2px;
-    -fx-background-radius: -2px;
+    -fx-background-color: TRANSPARENT;
+    -fx-border-color: TRANSPARENT;
     -fx-font-size: 13px;
     -fx-font-family: Georgia;
     -fx-text-fill: #ffffff;
 }
 .button:hover{
-    -fx-background-color: linear-gradient(to right,#050e70,#332140);
-    -fx-border-color: #ffffff;
-    -fx-border-width: 2px;
-    -fx-border-radius: 2px;
-    -fx-background-radius: 0px;
+    -fx-background-color: linear-gradient(to right,#050e70,#330058);
+    -fx-border-color: TRANSPARENT;
     -fx-font-size: 13px;
     -fx-font-family: Georgia;
     -fx-text-fill: #ffffff;
+}
+
+.close{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+.close:hover{
+    -fx-background-color: #ff0000;
+    -fx-cursor: hand;
+}
+
+.reduce{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+.reduce:hover{
+    -fx-background-color: #c4baba;
+    -fx-cursor: hand;
+}
+.logout{
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+.logout:hover{
+    -fx-background-color: #c4baba;
+    -fx-cursor: hand;
+}
+.ombre{
+    -fx-effect:dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.campi{
+    -fx-background-color: linear-gradient(to right, #053e8e,#330058);
+    -fx-border-color:  TRANSPARENT;
+}
+.aggiorna{
+    -fx-background-color: linear-gradient(to right, #053e8e,#330058);
+    -fx-border-color:  TRANSPARENT;
+    -fx-font-size: 13px;
+    -fx-font-family: Georgia;
+    -fx-text-fill: #ffffff;
+}
+.pasButton {
+    -fx-background-color: linear-gradient(to right, #053e8e, #330058);
+
+}
+
+.textfield{
+    -fx-background-color: linear-gradient(to bottom, #efefef,#eee);
+    -fx-border-color: #000000;
+    -fx-border-width: 0.5px;
+    -fx-border-radius: 0.5px;
+    -fx-background-radius: 0px;
+    -fx-font-size: 13px;
+    -fx-font-family: Georgia;
 }

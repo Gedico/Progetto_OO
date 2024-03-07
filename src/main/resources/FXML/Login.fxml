@@ -13,12 +13,12 @@
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="227.0" styleClass="left-form" stylesheets="@Stili/LoginStyle.css" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="WHITE" layoutX="64.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unina" textAlignment="CENTER">
+            <Text fill="WHITE" layoutX="64.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unina" textAlignment="CENTER">
                <font>
                   <Font name="Georgia" size="36.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="47.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delivery" textAlignment="CENTER">
+            <Text fill="WHITE" layoutX="47.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delivery" textAlignment="CENTER">
                <font>
                   <Font name="Georgia" size="36.0" />
                </font>
@@ -55,6 +55,11 @@
                   <Font name="Georgia" size="18.0" />
                </font>
             </Text>
+            <Button fx:id="Chiudi" layoutX="319.0" layoutY="14.0" mnemonicParsing="false" onAction="#ChiudiFinestraLogin" prefHeight="28.0" prefWidth="42.0" styleClass="close" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+               <graphic>
+                  <FontAwesomeIcon glyphName="CLOSE" selectionFill="BLACK" styleClass="close" />
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </center>

@@ -40,4 +40,27 @@ public class OrdiniDao {
         return count;
     }
 
+    public int ordiniGestiti() {
+        int count = 0;
+
+        if (connection == null) {
+            System.err.println("La connessione al database non è stata stabilita correttamente.");
+            return count; // Ritorna 0 se la connessione non è stata stabilita
+        }
+
+        String query = "SELECT COUNT(*) AS count FROM ordine WHERE elaborato = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setBoolean(1, true);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    count = resultSet.getInt("count");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
 }
