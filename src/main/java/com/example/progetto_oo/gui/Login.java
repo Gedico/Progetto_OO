@@ -19,24 +19,24 @@ public class Login extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {
-        FXMLLoader fxmlLoader = new FXMLLoader(Login.class.getResource("/FXML/Login.fxml"));
-        BorderPane root = fxmlLoader.load();
-        Scene scene = new Scene(root);
-        primaryStage.initStyle(StageStyle.UNDECORATED);//creo la finestra senza bordi e bottoni di chiusura e riduzione
+            FXMLLoader fxmlLoader = new FXMLLoader(Login.class.getResource("/FXML/Login.fxml"));
+            BorderPane root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            primaryStage.initStyle(StageStyle.UNDECORATED);//creo la finestra senza bordi e bottoni di chiusura e riduzione
 
-        // Aggiungo un listener per gestire l'evento di trascinamento della finestra
-        root.setOnMousePressed((MouseEvent event) -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
-        });
+            // Aggiungo un listener per gestire l'evento di trascinamento della finestra
+            root.setOnMousePressed((MouseEvent event) -> {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            });
 
-        root.setOnMouseDragged((MouseEvent event) -> {
-            primaryStage.setX(event.getScreenX() - xOffset);
-            primaryStage.setY(event.getScreenY() - yOffset);
-        });
+            root.setOnMouseDragged((MouseEvent event) -> {
+                primaryStage.setX(event.getScreenX() - xOffset);
+                primaryStage.setY(event.getScreenY() - yOffset);
+            });
 
-        primaryStage.setScene(scene);
-        primaryStage.show();} catch (IOException e) {
+            primaryStage.setScene(scene);
+            primaryStage.show();} catch (IOException e) {
             e.printStackTrace();
             Alerts.mostraMessaggioErrore("Errore", "Errore", "Errore durante il caricamento della finestra di login");
         }
@@ -46,5 +46,4 @@ public class Login extends Application {
         launch(args);
     }
 }
-
 

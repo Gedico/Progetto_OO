@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginController {
-    public String operatore;
+    private String operatore;
     public TextField Username;
     public PasswordField Password;
     public Button Login;
@@ -24,18 +24,20 @@ public class LoginController {
     Connessione connessione = new Connessione();
     OperatoreDao operatoreDao = new OperatoreDao(connessione);
     Home home = new Home();
+    ProfiloController profiloController = new ProfiloController();
+
 
     public void LoginOnAction(ActionEvent event) throws IOException {
         if (Username.getText().isBlank()||Password.getText().isBlank()) {
             avvisoErrore.setText("Riempire i campi vuoti");
-        } else if (operatoreDao.verificaLogin(Username.getText(), Password.getText())) {
+        }
+        else if (operatoreDao.verificaLogin(Username.getText(), Password.getText())) {
             Stage stage = (Stage) Login.getScene().getWindow();
             stage.close();
             home.creaFinestraHome(new Stage());
-
-            loginSuccess(Username.getText());
-
-        } else {
+            profiloController.setOperatore(Username.getText());
+        }
+        else {
             avvisoErrore.setText("Login fallito");
         }
     }
@@ -43,13 +45,6 @@ public class LoginController {
     public void ChiudiFinestraLogin(ActionEvent event) {
         Stage stage = (Stage) Chiudi.getScene().getWindow();
         stage.close();
-    }
-    public String getOperatore(){
-        return this.operatore;
-    }
-    public void loginSuccess(String username) {
-        this.operatore = username;
-        System.out.println("Operatore memorizzato: " + this.operatore);
     }
 }
 

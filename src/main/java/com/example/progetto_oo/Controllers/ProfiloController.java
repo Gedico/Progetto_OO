@@ -17,19 +17,20 @@ public class ProfiloController implements Initializable {
     public Text usernameInProfilo;
     public Text nomeInProfilo;
     public Text cognomeInProfilo;
-    public Button cambiaPassword;
-    LoginController loginController = new LoginController();
-    String operatore = loginController.getOperatore();
+    public Button cambiaPassword;;
+    public String operatore;
 
     public void cambiaPasswordOnAction(ActionEvent event) {
-        System.out.println(""+operatore);
+        System.out.println(operatore);
     }
+
+    public void setOperatore(String operatore) {
+        this.operatore = operatore;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // Puoi inizializzare eventuali componenti della GUI qui
     }
-
-
-
-
 }
+

@@ -3,12 +3,8 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
@@ -63,7 +59,7 @@
       </AnchorPane>
    </left>
    <top>
-      <AnchorPane prefHeight="33.0" prefWidth="883.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="34.0" prefWidth="890.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="Aggiorna" layoutY="3.0" mnemonicParsing="false" onAction="#aggiornaOnAction" prefHeight="28.0" prefWidth="28.0" stylesheets="@Stili/HomeStyle.css" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="2.0">
                <graphic>
@@ -73,7 +69,7 @@
                   <String fx:value="aggiorna" />
                   <String fx:value="ombre" />
                </styleClass></Button>
-            <Button fx:id="chiudiHome" layoutX="816.0" layoutY="3.0" mnemonicParsing="false" onAction="#chiudiOnAction" styleClass="close" stylesheets="@Stili/HomeStyle.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+            <Button fx:id="chiudiHome" layoutX="816.0" layoutY="3.2" mnemonicParsing="false" onAction="#chiudiOnAction" prefHeight="26.0" prefWidth="49.0" styleClass="close" stylesheets="@Stili/HomeStyle.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="3.0">
                <graphic>
                   <FontAwesomeIcon glyphName="CLOSE" styleClass="close" textAlignment="CENTER" wrappingWidth="29.414236068725586" />
                </graphic>
@@ -120,14 +116,11 @@
                         </Pane>
                         <Pane layoutX="41.0" layoutY="214.0" prefHeight="333.0" prefWidth="572.0" stylesheets="@Stili/HomeStyle.css">
                            <children>
-                              <TableView layoutX="11.0" layoutY="53.0" prefHeight="262.0" prefWidth="549.0">
+                              <TableView fx:id="TabellaOrdiniHome" layoutX="11.0" layoutY="53.0" prefHeight="262.0" prefWidth="549.0">
                                  <columns>
-                                    <TableColumn prefWidth="75.0" text="Nome" />
-                                    <TableColumn prefWidth="75.0" text="cognome" />
-                                    <TableColumn prefWidth="75.0" text="cognome" />
-                                    <TableColumn prefWidth="106.40005493164062" text="cognome" />
-                                    <TableColumn prefWidth="72.0" text="cognome" />
-                                    <TableColumn prefWidth="142.39999389648438" text="cognome" />
+                                    <TableColumn fx:id="CodOrdineHomeTab" prefWidth="161.5999870300293" text="Codice Ordine" />
+                                    <TableColumn fx:id="CFHomeTab" prefWidth="232.80006408691406" text="CF" />
+                                    <TableColumn fx:id="TipologiaHomeTab" prefWidth="155.20004272460938" text="Tipologia" />
                                  </columns>
                               </TableView>
                               <Text fill="WHITE" layoutX="204.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ultimi Ordini Gestiti">
@@ -167,10 +160,10 @@
                         <String fx:value="right-form" />
                      </styleClass>
                   </AnchorPane>
-                  <fx:include source="Profilo.fxml" fx:id="patternProfilo" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" stylesheets="@Stili/HomeStyle.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" visible="false"/>
-                  <fx:include source="VisualizzaOrdini.fxml" fx:id="patternVisualizzaOrdini" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" stylesheets="@Stili/HomeStyle.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" visible="false"/>
-                  <fx:include source="VisualizzaReport.fxml" fx:id="patternVisualizzaReport" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" stylesheets="@Stili/HomeStyle.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" visible="false"/>
-                  <fx:include source="CreaSpedizione.fxml" fx:id="patternCreaSpedizione" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" stylesheets="@Stili/HomeStyle.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" visible="false"/>
+                  <fx:include fx:id="patternProfilo" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" source="Profilo.fxml" stylesheets="@Stili/HomeStyle.css" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                  <fx:include fx:id="patternVisualizzaOrdini" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" source="VisualizzaOrdini.fxml" stylesheets="@Stili/HomeStyle.css" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                  <fx:include fx:id="patternVisualizzaReport" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" source="VisualizzaReport.fxml" stylesheets="@Stili/HomeStyle.css" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                  <fx:include fx:id="patternCreaSpedizione" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" source="CreaSpedizione.fxml" stylesheets="@Stili/HomeStyle.css" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
 
                </children>
             </AnchorPane>

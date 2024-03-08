@@ -8,6 +8,7 @@ module com.example.progetto_oo {
     exports com.example.progetto_oo;
     exports com.example.progetto_oo.Controllers;
     exports com.example.progetto_oo.gui;
+    exports com.example.progetto_oo.Database;
     opens com.example.progetto_oo.gui to javafx.fxml;
 }
 
