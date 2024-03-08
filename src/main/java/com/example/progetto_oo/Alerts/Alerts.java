@@ -1,6 +1,7 @@
 package com.example.progetto_oo.Alerts;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 
 import java.util.Optional;
@@ -36,7 +37,7 @@ public class Alerts {
 
         // Aggiungi i pulsanti di conferma e annulla
         ButtonType confermaButton = new ButtonType("Conferma");
-        ButtonType annullaButton = new ButtonType("Annulla");
+        ButtonType annullaButton = new ButtonType("Annulla", ButtonBar.ButtonData.CANCEL_CLOSE); // Imposta il pulsante di annullamento
         alert.getButtonTypes().setAll(confermaButton, annullaButton);
 
         // Mostra il popup e ottieni la risposta dell'utente
@@ -45,5 +46,6 @@ public class Alerts {
         // Restituisci true se l'utente ha confermato, altrimenti false
         return result.isPresent() && result.get() == confermaButton;
     }
+
 }
 

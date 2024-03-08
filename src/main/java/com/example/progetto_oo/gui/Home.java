@@ -12,21 +12,38 @@ import java.io.IOException;
 
 public class Home extends Application {
 
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-
-        creaFinestraHome();
+        creaFinestraHome(primaryStage);
     }
 
-    public void creaFinestraHome() throws IOException {
+    public void creaFinestraHome(Stage homeStage) throws IOException {
         // Creazione della finestra "Home"
-        Stage homeStage = new Stage();
-       homeStage.initStyle(StageStyle.UNDECORATED);//creo la finestra senza bordi e bottoni di chiusura e riduzione
+        homeStage.initStyle(StageStyle.UNDECORATED); // creo la finestra senza bordi e bottoni di chiusura e riduzione
         FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/FXML/Homepage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 900, 630);
+        BorderPane root = fxmlLoader.load();
+
+        // Gestione degli eventi del mouse per rendere la finestra trascinabile
+        root.setOnMousePressed((MouseEvent event) -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
+
+        root.setOnMouseDragged((MouseEvent event) -> {
+            homeStage.setX(event.getScreenX() - xOffset);
+            homeStage.setY(event.getScreenY() - yOffset);
+        });
+
+        Scene scene = new Scene(root, 900, 630);
         homeStage.setTitle("Home");
         homeStage.setScene(scene);
         homeStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }

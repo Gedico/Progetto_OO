@@ -5,33 +5,31 @@ import com.example.progetto_oo.gui.Login;
 import com.example.progetto_oo.gui.Profilo;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class VisualizzaReportController {
-    public Button GoHome;
-    public Button GoProfilo;
-    public Button GoLogout;
-    Login login = new Login();
-    Profilo profilo = new Profilo();
-    Home home = new Home();
 
-    public void GoLogoutOnAction(ActionEvent event) throws IOException {
-        Stage stage = (Stage) GoLogout.getScene().getWindow();
-        stage.close();
-        login.start(new Stage());
-    }
+    public MenuButton MenuReport;
+    public MenuItem GennaioReport;
+    public MenuItem FebbraioReport;
+    public MenuItem MarzoReport;
+    public MenuItem AprileReport;
+    public MenuItem MaggioReport;
+    public MenuItem GiugnoReport;
+    public MenuItem LuglioReport;
+    public MenuItem AgostoReport;
+    public MenuItem SettembreReport;
+    public MenuItem OttobreReport;
+    public MenuItem NovembreReport;
+    public MenuItem DicembreReport;
+    public TableView TabellaOrdineMenoProdotti;
+    public TableView TabellaOrdinePiuProdotti;
 
-    public void GoProfiloOnAction(ActionEvent event) throws IOException {
-        Stage stage = (Stage) GoProfilo.getScene().getWindow();
-        stage.close();
-        profilo.creaFinestraProfilo();
-    }
-
-    public void GoHomeOnAction(ActionEvent event)throws IOException {
-        Stage stage = (Stage) GoHome.getScene().getWindow();
-        stage.close();
-        home.creaFinestraHome();
+    public void SceltaMeseReport(ActionEvent event) {
     }
 }

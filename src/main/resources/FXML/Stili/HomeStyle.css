@@ -17,7 +17,7 @@
     -fx-text-fill: #ffffff;
 }
 .button:hover{
-    -fx-background-color: linear-gradient(to right,#050e70,#330058);
+    -fx-background-color:#330022;
     -fx-border-color: TRANSPARENT;
     -fx-font-size: 13px;
     -fx-font-family: Georgia;

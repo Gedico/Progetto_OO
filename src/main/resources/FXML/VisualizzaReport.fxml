@@ -1,28 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import javafx.scene.control.Button?>
+<?import java.lang.String?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.progetto_oo.Controllers.VisualizzaReportController">
-   <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="left-form" stylesheets="@Stili/HomeStyle.css" BorderPane.alignment="CENTER">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="674.0" stylesheets="@Stili/HomeStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.progetto_oo.Controllers.VisualizzaReportController">
+   <styleClass>
+      <String fx:value="right-form" />
+      <String fx:value="ombre" />
+   </styleClass>
+   <children>
+      <Pane layoutX="12.0" layoutY="185.0" prefHeight="111.0" prefWidth="650.0" styleClass="left-form">
          <children>
-            <Button fx:id="GoHome" layoutX="39.0" layoutY="171.0" mnemonicParsing="false" onAction="#GoHomeOnAction" prefHeight="26.0" prefWidth="122.0" text="Home" />
-            <Button fx:id="GoProfilo" layoutX="39.0" layoutY="465.0" mnemonicParsing="false" onAction="#GoProfiloOnAction" prefHeight="26.0" prefWidth="122.0" text="Profilo" />
-            <Button fx:id="GoLogout" layoutX="39.0" layoutY="533.0" mnemonicParsing="false" onAction="#GoLogoutOnAction" prefHeight="26.0" prefWidth="122.0" text="Logout" />
-            <Line endX="100.0" layoutX="100.0" layoutY="426.0" startX="-100.0" stroke="WHITE" />
-            <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="62.0" layoutY="96.0" size="8em" />
-            <Text fill="WHITE" layoutX="15.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benvenuto Operatore">
+            <Text fill="WHITE" layoutX="32.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ordine Con Meno Prodotti" textAlignment="CENTER">
                <font>
-                  <Font name="Georgia" size="18.0" />
+                  <Font name="Georgia" size="14.0" />
+               </font>
+            </Text>
+            <TableView fx:id="TabellaOrdineMenoProdotti" layoutX="11.0" layoutY="39.0" prefHeight="58.0" prefWidth="632.0">
+              <columns>
+                <TableColumn prefWidth="124.79999160766602" text="ID_Ordine" />
+                <TableColumn prefWidth="188.7999725341797" text="CF" />
+                  <TableColumn prefWidth="175.20001220703125" text="Data" />
+                  <TableColumn prefWidth="144.79998779296875" text="Tipolgia" />
+              </columns>
+            </TableView>
+            <FontAwesomeIcon fill="WHITE" glyphName="MINUS" layoutX="11.0" layoutY="29.0" size="1.8em" />
+         </children>
+      </Pane>
+      <Pane layoutX="11.0" layoutY="348.0" prefHeight="111.0" prefWidth="650.0" styleClass="left-form">
+         <children>
+            <Text fill="WHITE" layoutX="36.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ordine Con più Prodotti" textAlignment="CENTER">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font>
+            </Text>
+            <FontAwesomeIcon fill="WHITE" glyphName="PLUS" layoutX="11.0" layoutY="29.0" size="1.8em" />
+            <TableView fx:id="TabellaOrdinePiuProdotti" layoutX="9.0" layoutY="39.0" prefHeight="58.0" prefWidth="632.0">
+               <columns>
+                  <TableColumn prefWidth="124.79999160766602" text="ID_Ordine" />
+                  <TableColumn prefWidth="188.7999725341797" text="CF" />
+                  <TableColumn prefWidth="175.20001220703125" text="Data" />
+                  <TableColumn prefWidth="144.79998779296875" text="Tipolgia" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <Pane layoutX="460.0" layoutY="38.0" prefHeight="111.0" prefWidth="200.0" styleClass="left-form">
+         <children>
+            <Text fill="WHITE" layoutX="22.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Media Ordini Giornaliera" textAlignment="CENTER">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font>
+            </Text>
+            <FontAwesomeIcon fill="WHITE" glyphName="PENCIL" layoutX="22.0" layoutY="35.0" size="2em" />
+            <Text fx:id="MediaOrdiniMensili" fill="WHITE" layoutX="156.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="Georgia" size="24.0" />
                </font>
             </Text>
          </children>
-      </AnchorPane>
-   </left>
-</BorderPane>
+      </Pane>
+      <MenuButton fx:id="MenuReport" layoutX="17.0" layoutY="38.0" mnemonicParsing="false" onAction="#SceltaMeseReport" popupSide="RIGHT" styleClass="pasButton" text="Seleziona Mese" textFill="WHITE">
+        <items>
+          <MenuItem fx:id="GennaioReport" mnemonicParsing="false" text="Gennaio" />
+          <MenuItem fx:id="FebbraioReport" mnemonicParsing="false" text="Febbraio" />
+            <MenuItem fx:id="MarzoReport" mnemonicParsing="false" text="Marzo" />
+            <MenuItem fx:id="AprileReport" mnemonicParsing="false" text="Aprile" />
+            <MenuItem fx:id="MaggioReport" mnemonicParsing="false" text="Maggio" />
+            <MenuItem fx:id="GiugnoReport" mnemonicParsing="false" text="Giugno" />
+            <MenuItem fx:id="LuglioReport" mnemonicParsing="false" text="Luglio" />
+            <MenuItem fx:id="AgostoReport" mnemonicParsing="false" text="Agosto" />
+            <MenuItem fx:id="SettembreReport" mnemonicParsing="false" text="settembre" />
+            <MenuItem fx:id="OttobreReport" mnemonicParsing="false" text="Ottobre" />
+            <MenuItem fx:id="NovembreReport" mnemonicParsing="false" text="Novembre" />
+            <MenuItem fx:id="DicembreReport" mnemonicParsing="false" text="Dicembre" />
+        </items>
+         <font>
+            <Font name="Georgia" size="14.0" />
+         </font>
+      </MenuButton>
+   </children>
+</AnchorPane>

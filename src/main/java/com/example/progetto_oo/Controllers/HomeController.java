@@ -35,19 +35,16 @@ public class HomeController implements Initializable {
     public Button Aggiorna;
     public Text OrdiniGestiti;
     public AnchorPane patternHome;
-    public AnchorPane patterProfilo;
     public AnchorPane patternVisualizzaReport;
-    public Text patternCreaSpedizione;
     public Button goHome;
-    public MenuItem sceltoUtente;
-    public MenuItem sceltoPeriodo;
-    public AnchorPane CercaPerUtente;
-    public AnchorPane CercaPerData;
-    public AnchorPane patternVisualizzaOrdinal;
+    public AnchorPane patternVisualizzaOrdini;
+    public AnchorPane patternProfilo;
+    public AnchorPane patternCreaSpedizione;
     Login login = new Login();
     Connessione connessione = new Connessione();
     OrdiniDao ordiniDao = new OrdiniDao(connessione);
     Alerts Alerts = new Alerts();
+
 
 
     public void GoLogoutOnAction(ActionEvent event) throws IOException {//metodo per tornare alla finestra di login con popu-up che chiede se siamo sicuri di voler uscire
@@ -59,12 +56,10 @@ public class HomeController implements Initializable {
         }
     }
 
-    public void aggiornaOnAction(ActionEvent event) {
-        ordiniDaGestire.setText("" + ordiniDao.ordiniDaGestire());
-        OrdiniGestiti.setText("" + ordiniDao.ordiniGestiti());
+   public void aggiornaOnAction(ActionEvent event) {
+     ordiniDaGestire.setText("" + ordiniDao.ordiniDaGestire());
+     OrdiniGestiti.setText("" + ordiniDao.ordiniGestiti());
     }
-
-
 
     public void chiudiOnAction(ActionEvent event) {//metodo per il bottone chiudi
             Stage stage = (Stage) chiudiHome.getScene().getWindow();
@@ -79,54 +74,40 @@ public class HomeController implements Initializable {
     public void CambiaVisione(ActionEvent event) {//Metodo per poter cambiare "pagina"
         if(event.getSource() == GoProfilo){
             patternHome.setVisible(false);
-            patterProfilo.setVisible(true);
-            //patternCreaSpedizione.setVisible(false);
-            patternVisualizzaOrdinal.setVisible(false);
+            patternProfilo.setVisible(true);
+            patternCreaSpedizione.setVisible(false);
+            patternVisualizzaOrdini.setVisible(false);
             patternVisualizzaReport.setVisible(false);
         }else if(event.getSource() == GoVisualizzaOrdini){
             patternHome.setVisible(false);
-            patterProfilo.setVisible(false);
-            //patternCreaSpedizione.setVisible(false);
-            patternVisualizzaOrdinal.setVisible(true);
+            patternProfilo.setVisible(false);
+            patternCreaSpedizione.setVisible(false);
+            patternVisualizzaOrdini.setVisible(true);
             patternVisualizzaReport.setVisible(false);
         }else if(event.getSource() == GoCreaSpedizione){
             patternHome.setVisible(false);
-            patterProfilo.setVisible(false);
-           // patternCreaSpedizione.setVisible(true);
-            patternVisualizzaOrdinal.setVisible(false);
+            patternProfilo.setVisible(false);
+            patternCreaSpedizione.setVisible(true);
+            patternVisualizzaOrdini.setVisible(false);
             patternVisualizzaReport.setVisible(false);
     }   else if(event.getSource() == GoVisualizzaReport){
             patternHome.setVisible(false);
-            patterProfilo.setVisible(false);
-           // patternCreaSpedizione.setVisible(false);
-            patternVisualizzaOrdinal.setVisible(false);
+            patternProfilo.setVisible(false);
+            patternCreaSpedizione.setVisible(false);
+            patternVisualizzaOrdini.setVisible(false);
             patternVisualizzaReport.setVisible(true);
         }else if(event.getSource() == goHome){
             patternHome.setVisible(true);
-            patterProfilo.setVisible(false);
-           // patternCreaSpedizione.setVisible(false);
-            patternVisualizzaOrdinal.setVisible(false);
+            patternProfilo.setVisible(false);
+            patternCreaSpedizione.setVisible(false);
+            patternVisualizzaOrdini.setVisible(false);
             patternVisualizzaReport.setVisible(false);
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
-
-    public void cambiaPasswordOnAction(ActionEvent event) {
-    }
-
-    public void sceltaVisualizza(ActionEvent event) {
-        if(event.getSource() == sceltoUtente){
-            CercaPerUtente.setVisible(true);
-            CercaPerData.setVisible(false);
-    }else if(event.getSource() == sceltoPeriodo){
-            CercaPerUtente.setVisible(false);
-            CercaPerData.setVisible(true);
-
-        }
+        ordiniDaGestire.setText("" + ordiniDao.ordiniDaGestire());
+        OrdiniGestiti.setText("" + ordiniDao.ordiniGestiti());
     }
 }
