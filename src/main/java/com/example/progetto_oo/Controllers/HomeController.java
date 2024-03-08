@@ -40,10 +40,17 @@ public class HomeController implements Initializable {
     public AnchorPane patternVisualizzaOrdini;
     public AnchorPane patternProfilo;
     public AnchorPane patternCreaSpedizione;
-    public TableView<Ordine> TabellaOrdiniHome;
-    public TableColumn<Ordine, String> CodOrdineHomeTab;
-    public TableColumn<Ordine, String> CFHomeTab;
-    public TableColumn<Ordine, String> TipologiaHomeTab;
+      public TableView<Ordine> TabellaOrdiniHome;
+    public TableColumn IDOrdineHome;
+    public TableColumn CFhome;
+    public TableColumn DATAHome;
+    public TableColumn TIPOHome;
+    public TableColumn IDMERHome;
+    public TableColumn QUANTHome;
+    public TableColumn DESCHome;
+    public TableView tabellaRicercaOrdini;
+
+
     Login login = new Login();
     Connessione connessione = new Connessione();
     OrdiniDao ordiniDao = new OrdiniDao(connessione);
@@ -123,19 +130,19 @@ public class HomeController implements Initializable {
         System.out.println("Numero di ordini ottenuti: " + ultimiDieciOrdini.size());
 
         // Crea le colonne della tabella
-        CodOrdineHomeTab.setCellValueFactory(new PropertyValueFactory<>("codOrdine"));
-        CFHomeTab.setCellValueFactory(new PropertyValueFactory<>("cf"));
-        TipologiaHomeTab.setCellValueFactory(new PropertyValueFactory<>("tipologia"));
-
-        // Stampa di debug
-        System.out.println("Numero di colonne nella tabella: " + TabellaOrdiniHome.getColumns().size());
+        IDOrdineHome.setCellValueFactory(new PropertyValueFactory<>("codOrdine"));
+        CFhome.setCellValueFactory(new PropertyValueFactory<>("cf"));
+        TIPOHome.setCellValueFactory(new PropertyValueFactory<>("tipologia"));
+        DATAHome.setCellValueFactory(new PropertyValueFactory<>("dataordinato"));
+        IDMERHome.setCellValueFactory(new PropertyValueFactory<>("idMerce")); // Utilizza un nome diverso da IDMERHome
+        QUANTHome.setCellValueFactory(new PropertyValueFactory<>("quantità"));
+        DESCHome.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
 
         // Aggiungi gli ordini alla tabella
         TabellaOrdiniHome.getItems().setAll(ultimiDieciOrdini);
-
-        // Stampa di debug
-        System.out.println("Numero di righe nella tabella: " + TabellaOrdiniHome.getItems().size());
     }
+
+
 
 
 

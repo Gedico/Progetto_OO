@@ -32,7 +32,7 @@
                   <FontAwesomeIcon fill="WHITE" glyphName="BOOK" text="" />
                </graphic></Button>
             <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="62.0" layoutY="122.0" size="8EM" />
-            <Text fx:id="benvenutoOperatore" fill="WHITE" layoutX="15.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benvenuto Operatore" textAlignment="CENTER">
+            <Text fx:id="benvenutoOperatore" fill="WHITE" layoutX="13.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benvenuto Operatore" textAlignment="CENTER">
                <font>
                   <Font name="Georgia" size="18.0" />
                </font>
@@ -114,20 +114,24 @@
                               <String fx:value="campi" />
                            </styleClass>
                         </Pane>
-                        <Pane layoutX="41.0" layoutY="214.0" prefHeight="333.0" prefWidth="572.0" stylesheets="@Stili/HomeStyle.css">
+                        <Pane layoutX="16.0" layoutY="181.0" prefHeight="382.0" prefWidth="643.0" stylesheets="@Stili/HomeStyle.css" AnchorPane.bottomAnchor="15.000000000000114" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0">
                            <children>
-                              <TableView fx:id="TabellaOrdiniHome" layoutX="11.0" layoutY="53.0" prefHeight="262.0" prefWidth="549.0">
-                                 <columns>
-                                    <TableColumn fx:id="CodOrdineHomeTab" prefWidth="161.5999870300293" text="Codice Ordine" />
-                                    <TableColumn fx:id="CFHomeTab" prefWidth="232.80006408691406" text="CF" />
-                                    <TableColumn fx:id="TipologiaHomeTab" prefWidth="155.20004272460938" text="Tipologia" />
-                                 </columns>
-                              </TableView>
-                              <Text fill="WHITE" layoutX="204.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ultimi Ordini Gestiti">
+                              <Text fill="WHITE" layoutX="238.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ultimi Ordini Gestiti">
                                  <font>
                                     <Font name="Georgia" size="18.0" />
                                  </font>
                               </Text>
+                              <TableView fx:id="TabellaOrdiniHome" layoutX="23.0" layoutY="44.0" prefHeight="314.0" prefWidth="594.0">
+                                 <columns>
+                                    <TableColumn fx:id="IDOrdineHome" prefWidth="64.79999160766602" text="ID_Ordine" />
+                                    <TableColumn fx:id="CFhome" prefWidth="85.5999755859375" text="CF" />
+                                    <TableColumn fx:id="DATAHome" prefWidth="78.39994812011719" text="Tipologia" />
+                                    <TableColumn fx:id="TIPOHome" prefWidth="84.0" text="Data" />
+                                    <TableColumn fx:id="IDMERHome" prefWidth="88.0" text="ID_Merce" />
+                                    <TableColumn fx:id="QUANTHome" prefWidth="54.4000244140625" text="Quantità" />
+                                    <TableColumn fx:id="DESCHome" prefWidth="138.39996337890625" text="Descrizione" />
+                                 </columns>
+                              </TableView>
                            </children>
                            <styleClass>
                               <String fx:value="campi" />

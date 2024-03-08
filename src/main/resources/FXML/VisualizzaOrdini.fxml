@@ -2,7 +2,6 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
@@ -21,12 +20,15 @@
    <children>
       <Pane layoutX="16.0" layoutY="230.0" prefHeight="363.0" prefWidth="622.0" stylesheets="@Stili/HomeStyle.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
          <children>
-            <TableView layoutX="14.0" layoutY="30.0" prefHeight="314.0" prefWidth="594.0">
+            <TableView fx:id="tabellaRicercaOrdini" layoutX="14.0" layoutY="30.0" prefHeight="314.0" prefWidth="594.0">
                <columns>
-                  <TableColumn prefWidth="148.79999160766602" text="Ordine" />
-                  <TableColumn prefWidth="137.6000518798828" text="Spedizione" />
-                  <TableColumn prefWidth="158.39996337890625" text="Data" />
-                  <TableColumn prefWidth="150.39991760253906" text="Utente" />
+                  <TableColumn fx:id="idOrdineVisOrdine" prefWidth="64.79999160766602" text="ID_Ordine" />
+                  <TableColumn fx:id="cfVisOrdine" prefWidth="85.5999755859375" text="CF" />
+                  <TableColumn fx:id="dataVisOrdine" prefWidth="78.39994812011719" text="Data" />
+                  <TableColumn fx:id="tipoVisOrdin" prefWidth="84.0" text="Tipologia" />
+                  <TableColumn fx:id="idMercVisOrdin" prefWidth="88.0" text="ID_Merce" />
+                  <TableColumn fx:id="quantitaVisOrdin" prefWidth="54.4000244140625" text="Quantità" />
+                  <TableColumn fx:id="descVisOrdin" prefWidth="138.39996337890625" text="Descrizione" />
                </columns>
             </TableView>
             <Text fill="WHITE" layoutX="244.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Risultati Ricerca">
@@ -46,28 +48,27 @@
             <String fx:value="right-form" />
          </styleClass>
          <children>
-            <Label layoutX="28.0" layoutY="35.0" prefHeight="18.0" prefWidth="166.0" text="Data Inizio">
-               <styleClass>
-                  <String fx:value="textfield" />
-                  <String fx:value="ombre" />
-               </styleClass>
-               <font>
-                  <Font name="Georgia" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="28.0" layoutY="83.0" prefHeight="18.0" prefWidth="166.0" text="Data Fine">
-               <styleClass>
-                  <String fx:value="textfield" />
-                  <String fx:value="ombre" />
-               </styleClass>
-               <font>
-                  <Font name="Georgia" size="14.0" />
-               </font>
-            </Label>
-            <Button layoutX="305.0" layoutY="44.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="75.0" styleClass="pasButton" text="Cerca" />
+            <Button fx:id="cercaPerData" layoutX="303.0" layoutY="44.0" mnemonicParsing="false" onAction="#cercaPerDataOnAction" prefHeight="39.0" prefWidth="75.0" styleClass="pasButton" text="Cerca" />
             <Text fill="#171863" layoutX="115.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ricerca Per Intervallo Di Tempo">
                <font>
                   <Font name="Georgia" size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="dataInizio" layoutX="28.0" layoutY="32.0" prefHeight="26.0" prefWidth="166.0" promptText="Data Inizio">
+               <styleClass>
+                  <String fx:value="textfield" />
+                  <String fx:value="ombre" />
+               </styleClass>
+            </TextField>
+            <TextField fx:id="dataFine" layoutX="28.0" layoutY="83.0" prefHeight="26.0" prefWidth="166.0" promptText="Data Fine">
+               <styleClass>
+                  <String fx:value="textfield" />
+                  <String fx:value="ombre" />
+               </styleClass>
+            </TextField>
+            <Text fx:id="erroreRicercaPerData" fill="RED" layoutX="253.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="175.1999969482422">
+               <font>
+                  <Font name="Georgia" size="13.0" />
                </font>
             </Text>
          </children>
@@ -87,16 +88,21 @@
             <String fx:value="ombre" />
          </styleClass>
          <children>
-            <TextField layoutX="32.0" layoutY="57.0" promptText="Utente">
+            <TextField fx:id="utenteVisualizza" layoutX="32.0" layoutY="57.0" promptText="Utente">
                <styleClass>
                   <String fx:value="textfield" />
                   <String fx:value="ombre" />
                </styleClass>
             </TextField>
-            <Button layoutX="314.0" layoutY="57.0" mnemonicParsing="false" styleClass="pasButton" text="Cerca" />
+            <Button fx:id="cercaPerUtente" layoutX="314.0" layoutY="57.0" mnemonicParsing="false" onAction="#CercaPerUtenteOnAction" styleClass="pasButton" text="Cerca" />
             <Text fill="#0d136b" layoutX="156.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ricerca Per Utente">
                <font>
                   <Font name="Georgia" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="erroreRicercaPerUtente" fill="RED" layoutX="252.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="175.1999969482422">
+               <font>
+                  <Font name="Georgia" size="13.0" />
                </font>
             </Text>
          </children>

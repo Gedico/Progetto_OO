@@ -70,16 +70,23 @@ public class OrdiniDao {
             return ordini;
         }
 
-        String query = "SELECT id_ordine, cf, tipologia FROM ordine ORDER BY dataordinato DESC LIMIT 10";
+        String query = "SELECT o.id_ordine, o.cf, dataordinato, tipologia, m.id_merce, quantità, descrizione\n" +
+                "FROM ordine AS o\n" +
+                "JOIN specifiche AS s ON o.id_ordine = s.id_ordine\n" +
+                "JOIN merce AS m ON m.id_merce = s.id_merce\n" +
+                "ORDER BY dataordinato DESC\n" +
+                "LIMIT 10;\n";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
-                    System.out.println("ciao");
                     Ordine ordine = new Ordine(
-                            resultSet.getString("id_ordine"),
+                            resultSet.getInt("id_ordine"),
                             resultSet.getString("cf"),
-                            resultSet.getString("tipologia")
-                    );
+                            resultSet.getString("dataordinato"),
+                            resultSet.getString("tipologia"),
+                            resultSet.getString("id_merce"),
+                            resultSet.getInt("quantità"),
+                            resultSet.getString("descrizione"));
                     ordini.add(ordine);
 
                 }
@@ -89,5 +96,41 @@ public class OrdiniDao {
         }
         return ordini;
     }
+    public List<Ordine> cercaInOrdiniPerCliente(String cf) {
+        List<Ordine> ordini = new ArrayList<>();
+
+        if (connection == null) {
+            Alerts.mostraMessaggioErrore("Errore", "Errore", "La connessione al database non è stata stabilita correttamente.");
+            return ordini;
+        }
+
+        String query = "select o.id_ordine ,cf,dataordinato,tipologia,m.id_merce,quantità,descrizione \n" +
+                "from \n" +
+                "(ordine as o join specifiche as s on o.id_ordine = s.id_ordine)\n" +
+                "join merce as m on m.id_merce = s.id_merce WHERE cf = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, cf);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    System.out.println("ciao");
+                    Ordine ordine = new Ordine(
+                            resultSet.getInt("id_ordine"),
+                            resultSet.getString("cf"),
+                            resultSet.getString("dataordinato"),
+                            resultSet.getString("tipologia"),
+                            resultSet.getString("id_merce"),
+                            resultSet.getInt("quantità"),
+                            resultSet.getString("descrizione")
+                    );
+                    ordini.add(ordine);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ordini;
+    }
+
 
 }
