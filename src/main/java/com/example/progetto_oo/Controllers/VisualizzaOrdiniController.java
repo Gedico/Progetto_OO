@@ -1,5 +1,6 @@
 package com.example.progetto_oo.Controllers;
 
+import com.example.progetto_oo.Database.ClienteDao;
 import com.example.progetto_oo.Database.Connessione;
 import com.example.progetto_oo.Database.Ordine;
 import com.example.progetto_oo.Database.OrdiniDao;
@@ -39,6 +40,7 @@ VisualizzaOrdiniController {
     public Text erroreRicercaPerUtente;
     Connessione connessione = new Connessione();
     OrdiniDao ordiniDao = new OrdiniDao(connessione);
+    ClienteDao clienteDao = new ClienteDao(connessione);
 
     public void sceltaVisualizza(ActionEvent event) {
         if(event.getSource() == sceltoUtente){
@@ -73,11 +75,34 @@ VisualizzaOrdiniController {
         System.out.println("Numero di righe nella tabella: " + tabellaRicercaOrdini.getItems().size());
     }
 
+    public void riempiTabellaPerData() {
+        // Ottieni la lista degli ultimi dieci ordini
+        List<Ordine> ultimiDieciOrdini = ordiniDao.cercaInOrdiniPerDate(dataInizio.getText(), dataFine.getText());
+
+        // Stampa di debug
+        System.out.println("Numero di ordini ottenuti: " + ultimiDieciOrdini.size());
+
+        // Crea le colonne della tabella
+        idOrdineVisOrdine.setCellValueFactory(new PropertyValueFactory<>("codOrdine"));
+        cfVisOrdine.setCellValueFactory(new PropertyValueFactory<>("cf"));
+        tipoVisOrdin.setCellValueFactory(new PropertyValueFactory<>("tipologia"));
+        dataVisOrdine.setCellValueFactory(new PropertyValueFactory<>("dataordinato"));
+        idMercVisOrdin.setCellValueFactory(new PropertyValueFactory<>("idMerce"));
+        quantitaVisOrdin.setCellValueFactory(new PropertyValueFactory<>("quantità"));
+        descVisOrdin.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
+
+        // Aggiungi gli ordini alla tabella
+        tabellaRicercaOrdini.getItems().setAll(ultimiDieciOrdini);
+
+        // Stampa di debug
+        System.out.println("Numero di righe nella tabella: " + tabellaRicercaOrdini.getItems().size());
+    }
+
     public void cercaPerDataOnAction(ActionEvent event) {
         erroreRicercaPerData.setText("");
         if (dataInizio.getText().isEmpty() || dataFine.getText().isEmpty()) {
             erroreRicercaPerData.setText("Inserire entrambe le date");
-        } else {
+        } else {riempiTabellaPerData();
 
         }
     }
@@ -85,6 +110,8 @@ VisualizzaOrdiniController {
         erroreRicercaPerUtente.setText("");
         if (utenteVisualizza.getText().isEmpty()) {
             erroreRicercaPerUtente.setText("Inserire un utente");
+        } else if (!clienteDao.verificaEsistenzaCF(utenteVisualizza.getText())) {
+            erroreRicercaPerUtente.setText("Utente non esistente");
         } else {riempiTabellaPerUtente();
 
         }

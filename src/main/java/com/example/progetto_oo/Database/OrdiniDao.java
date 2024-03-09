@@ -132,5 +132,47 @@ public class OrdiniDao {
         return ordini;
     }
 
+    public List<Ordine> cercaInOrdiniPerDate(String minDate, String maxDate) {
+        List<Ordine> ordini = new ArrayList<>();
+
+        if (connection == null) {
+            Alerts.mostraMessaggioErrore("Errore", "Errore", "La connessione al database non è stata stabilita correttamente.");
+            return ordini;
+        }
+
+        String query = "SELECT o.id_ordine, o.cf, dataordinato, tipologia, m.id_merce, quantità, descrizione " +
+                "FROM ordine o " +
+                "JOIN specifiche s ON o.id_ordine = s.id_ordine " +
+                "JOIN merce m ON m.id_merce = s.id_merce " +
+                "WHERE dataordinato BETWEEN CAST(? AS DATE) AND CAST(? AS DATE)";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, minDate);
+            preparedStatement.setString(2, maxDate);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    System.out.println("ciao");
+                    Ordine ordine = new Ordine(
+                            resultSet.getInt("id_ordine"),
+                            resultSet.getString("cf"),
+                            resultSet.getString("dataordinato"),
+                            resultSet.getString("tipologia"),
+                            resultSet.getString("id_merce"),
+                            resultSet.getInt("quantità"),
+                            resultSet.getString("descrizione")
+                    );
+                    ordini.add(ordine);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ordini;
+    }
+
+
+
+
 
 }

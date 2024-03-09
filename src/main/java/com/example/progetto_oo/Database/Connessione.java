@@ -1,6 +1,7 @@
 package com.example.progetto_oo.Database;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import com.example.progetto_oo.Alerts.Alerts;
 
@@ -31,5 +32,6 @@ public class Connessione {
             Alerts.mostraMessaggioErrore("Errore","Errore", "Errore durante la chiusura della connessione");
         }
     }
+
 }
 
