@@ -1,16 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="761.0" stylesheets="@Stili/HomeStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="670.0" stylesheets="@Stili/HomeStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.progetto_oo.Controllers.CreaSpedizioneController">
    <styleClass>
       <String fx:value="right-form" />
       <String fx:value="ombre" />
    </styleClass>
    <children>
-      <Text layoutX="339.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CreaSpedizione" />
+      <Pane layoutX="24.0" layoutY="58.0" prefHeight="170.0" prefWidth="610.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+         <children>
+            <Text fill="WHITE" layoutX="249.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ordini Da Gestire">
+               <font>
+                  <Font name="Georgia" size="18.0" />
+               </font>
+            </Text>
+            <TableView fx:id="TabellaOrdiniSpedizione" layoutX="12.0" layoutY="46.0" prefHeight="110.0" prefWidth="615.0">
+               <columns>
+                  <TableColumn fx:id="IDOrdineSpedizione" prefWidth="70.39999485015869" text="ID_Ordine" />
+                  <TableColumn fx:id="CFOrdineSpedizione" prefWidth="95.99993896484375" text="CF" />
+                  <TableColumn fx:id="DataOrdineSpedizione" prefWidth="72.00001525878906" text="Tipologia" />
+                  <TableColumn fx:id="TipoOrdineSpedizione" prefWidth="81.5999755859375" text="Data" />
+                  <TableColumn fx:id="IDMerOrdineSpedizione" prefWidth="95.20001220703125" text="ID_Merce" />
+                  <TableColumn fx:id="QuantitaOrdineSpedizione" prefWidth="70.39999389648438" text="Quantità" />
+                  <TableColumn fx:id="DescOrdineSpedizione" prefWidth="120.0" text="Descrizione" />
+               </columns>
+            </TableView>
+         </children>
+         <styleClass>
+            <String fx:value="left-form" />
+            <String fx:value="ombre" />
+         </styleClass>
+      </Pane>
+      <Button layoutX="18.0" layoutY="14.0" mnemonicParsing="false" onAction="#StampaOrdiniDaGestireOnAction" text="Stampa Ordini Da Gestire">
+         <styleClass>
+            <String fx:value="pasButton" />
+            <String fx:value="ombre" />
+         </styleClass></Button>
+      <Pane layoutX="21.0" layoutY="275.0" prefHeight="170.0" prefWidth="634.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+         <children>
+            <TableView fx:id="TabellaVeicoliSpedizione" layoutX="12.0" layoutY="46.0" prefHeight="110.0" prefWidth="615.0">
+               <columns>
+                  <TableColumn fx:id="TargaVeicolo" prefWidth="72.79998683929443" text="Targa" />
+                  <TableColumn fx:id="MaxTrasportabileVeicolo" prefWidth="147.20001220703125" text="Max Trasportabile" />
+                  <TableColumn fx:id="DescrizioneVeicolo" prefWidth="140.800048828125" text="Descrizione" />
+                  <TableColumn fx:id="MatricolaCorriereVeicolo" prefWidth="162.39996337890625" text="Matricola" />
+                  <TableColumn fx:id="ID_MagazzinoVeicoli" prefWidth="89.60003662109375" text="Id_Magazzino" />
+               </columns>
+            </TableView>
+            <Text fill="WHITE" layoutX="242.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veicoli Disponibili">
+               <font>
+                  <Font name="Georgia" size="18.0" />
+               </font>
+            </Text>
+         </children>
+         <styleClass>
+            <String fx:value="left-form" />
+            <String fx:value="ombre" />
+         </styleClass>
+      </Pane>
+      <Button fx:id="CreaSpedizione" layoutX="544.0" layoutY="494.0" mnemonicParsing="false" onAction="#CreaSpedizoneOnAction" text="Crea Spedizione">
+         <font>
+            <Font name="Georgia" size="14.0" />
+         </font>
+         <styleClass>
+            <String fx:value="pasButton" />
+            <String fx:value="ombre" />
+         </styleClass>
+      </Button>
+      <TextField fx:id="ID_OrdineField" layoutX="21.0" layoutY="495.0" promptText="ID_Ordine">
+         <styleClass>
+            <String fx:value="textfield" />
+            <String fx:value="ombre" />
+         </styleClass></TextField>
+      <TextField fx:id="TargaField" layoutX="207.0" layoutY="495.0" promptText="Targa">
+         <styleClass>
+            <String fx:value="textfield" />
+            <String fx:value="ombre" />
+         </styleClass></TextField>
+      <TextField fx:id="DataSpedizione" layoutX="22.0" layoutY="240.0" promptText="Data Spedizione">
+         <styleClass>
+            <String fx:value="textfield" />
+            <String fx:value="ombre" />
+         </styleClass></TextField>
+      <Button fx:id="CercaVeicoliSpedizioe" layoutX="207.0" layoutY="239.0" mnemonicParsing="false" onAction="#CercaVeicoliOnAction" text="Creca Veicoli">
+         <font>
+            <Font name="Georgia" size="14.0" />
+         </font>
+         <styleClass>
+            <String fx:value="pasButton" />
+            <String fx:value="ombre" />
+         </styleClass>
+      </Button>
+      <Text fx:id="erroreSceltaVeicolo" fill="RED" layoutX="312.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="328.800048828125">
+         <font>
+            <Font name="Georgia" size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="resetSpedizione" layoutX="600.0" layoutY="14.0" mnemonicParsing="false" onAction="#resetSpedizioneOnAction" text="Reset">
+         <styleClass>
+            <String fx:value="pasButton" />
+            <String fx:value="ombre" />
+         </styleClass>
+      </Button>
    </children>
 </AnchorPane>
