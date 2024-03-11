@@ -1,4 +1,4 @@
-package com.example.progetto_oo.Mockup;
+package com.example.progetto_oo.gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +18,7 @@ public class CreaSpedizione extends Application {
     public void creaFinestraCreaSpedizione() throws IOException {
         // Creazione della finestra CreaSpedizione
         Stage homeStage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(com.example.progetto_oo.Mockup.Home.class.getResource("/FXML/CreaSpedizione.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(com.example.progetto_oo.gui.Home.class.getResource("/FXML/CreaSpedizione.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 850, 630);
         homeStage.setTitle("Creazione Spedizione");
         homeStage.setScene(scene);

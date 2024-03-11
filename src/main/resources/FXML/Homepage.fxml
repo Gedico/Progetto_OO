@@ -1,36 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="883.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.progetto_oo.Controllers.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="883.0" stylesheets="@Stili/HomeStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.progetto_oo.Controllers.HomeController">
    <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #317fa2;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="left-form" stylesheets="@Stili/HomeStyle.css" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="WHITE" layoutX="29.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unina" textAlignment="CENTER" wrappingWidth="141.33670806884766">
+            <Button fx:id="GoProfilo" layoutX="38.0" layoutY="430.0" mnemonicParsing="false" onAction="#CambiaVisione" prefHeight="26.0" prefWidth="125.0" text="Profilo">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="USER" size="1.2em" />
+               </graphic></Button>
+            <Button fx:id="GoVisualizzaReport" layoutX="32.0" layoutY="372.0" mnemonicParsing="false" onAction="#CambiaVisione" prefHeight="28.0" prefWidth="134.0" text="Reports" textAlignment="CENTER">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="PENCIL" />
+               </graphic></Button>
+            <Button fx:id="GoCreaSpedizione" layoutX="33.0" layoutY="309.0" mnemonicParsing="false" onAction="#CambiaVisione" prefHeight="28.0" prefWidth="134.0" text="Crea spedizione">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="CAR" />
+               </graphic></Button>
+            <Button fx:id="GoVisualizzaOrdini" layoutX="33.0" layoutY="252.0" mnemonicParsing="false" onAction="#CambiaVisione" prefHeight="28.0" prefWidth="134.0" text="Visualizza ordini">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="BOOK" text="" />
+               </graphic></Button>
+            <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="62.0" layoutY="122.0" size="8EM" />
+            <Text fx:id="benvenutoOperatore" fill="WHITE" layoutX="13.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benvenuto Operatore" textAlignment="CENTER">
                <font>
-                  <Font name="Georgia" size="36.0" />
+                  <Font name="Georgia" size="18.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="29.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delivery" textAlignment="CENTER" wrappingWidth="141.33670806884766">
+            <Button fx:id="GoLogout" layoutX="15.0" layoutY="557.0" mnemonicParsing="false" onAction="#GoLogoutOnAction" prefHeight="26.0" prefWidth="34.0" styleClass="logout" stylesheets="@Stili/HomeStyle.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+               <graphic>
+                  <FontAwesomeIcon fill="#2e564e" glyphName="SIGN_OUT" size="1.5em" />
+               </graphic>
+            </Button>
+            <Text fill="WHITE" layoutX="62.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logout">
                <font>
-                  <Font name="Georgia" size="36.0" />
+                  <Font name="Georgia" size="18.0" />
                </font>
             </Text>
-            <Line endX="100.0" layoutX="100.0" layoutY="437.0" startX="-100.0" stroke="WHITE" />
-            <Button fx:id="GoLogout" layoutX="38.0" layoutY="537.0" mnemonicParsing="false" onAction="#GoLogoutOnAction" prefHeight="26.0" prefWidth="125.0" style="-fx-border-color: ffffff; -fx-background-color: ffffff;" text="Logout" />
-            <Button fx:id="GoProfilo" layoutX="38.0" layoutY="469.0" mnemonicParsing="false" onAction="#GoProfiloOnAction" prefHeight="26.0" prefWidth="125.0" style="-fx-border-color: ffffff; -fx-background-color: ffffff;" text="Profilo" />
-            <Button fx:id="GoVisualizzaReport" layoutX="37.0" layoutY="335.0" mnemonicParsing="false" onAction="#GoVisualizzaReportOnAction" prefHeight="26.0" prefWidth="125.0" style="-fx-border-color: ffffff; -fx-background-color: ffffff;" text="Visualizza Report" />
-            <Button fx:id="GoCreaSpedizione" layoutX="38.0" layoutY="272.0" mnemonicParsing="false" onAction="#GoCreaSpedizioneOnAction" prefHeight="26.0" prefWidth="125.0" style="-fx-border-color: ffffff; -fx-background-color: ffffff;" text="Crea spedizione" />
-            <Button fx:id="GoVisualizzaOrdini" layoutX="38.0" layoutY="207.0" mnemonicParsing="false" onAction="#GoVisualizzaOrdiniOnAction" prefHeight="26.0" prefWidth="125.0" style="-fx-border-color: ffffff; -fx-background-color: ffffff;" text="Visualizza ordini" />
+            <Button fx:id="goHome" layoutX="33.0" layoutY="202.0" mnemonicParsing="false" onAction="#CambiaVisione" prefHeight="26.0" prefWidth="131.0" text="Home">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="HOME" />
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </left>
+   <top>
+      <AnchorPane prefHeight="34.0" prefWidth="890.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="Aggiorna" layoutY="3.0" mnemonicParsing="false" onAction="#aggiornaOnAction" prefHeight="28.0" prefWidth="28.0" stylesheets="@Stili/HomeStyle.css" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="2.0">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="REFRESH" />
+               </graphic>
+               <styleClass>
+                  <String fx:value="aggiorna" />
+                  <String fx:value="ombre" />
+               </styleClass></Button>
+            <Button fx:id="chiudiHome" layoutX="816.0" layoutY="3.2" mnemonicParsing="false" onAction="#chiudiOnAction" prefHeight="26.0" prefWidth="49.0" styleClass="close" stylesheets="@Stili/HomeStyle.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="3.0">
+               <graphic>
+                  <FontAwesomeIcon glyphName="CLOSE" styleClass="close" textAlignment="CENTER" wrappingWidth="29.414236068725586" />
+               </graphic>
+            </Button>
+            <Button fx:id="riduciHome" layoutX="785.0" layoutY="2.0" mnemonicParsing="false" onAction="#riduciHomeOnAction" prefHeight="28.0" prefWidth="46.0" styleClass="reduce" stylesheets="@Stili/HomeStyle.css" AnchorPane.rightAnchor="51.80000000000007" AnchorPane.topAnchor="2.0">
+               <graphic>
+                  <FontAwesomeIcon glyphName="MINUS" />
+               </graphic>
+            </Button>
+            <FontAwesomeIcon glyphName="USERS" layoutX="48.0" layoutY="24.0" size="1.5em" text="" />
+            <Text layoutX="75.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unina Delivery">
+               <font>
+                  <Font name="Georgia" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="right-form" stylesheets="@Stili/HomeStyle.css" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane fx:id="patternHome" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" stylesheets="@Stili/HomeStyle.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                     <children>
+                        <Pane layoutX="41.0" layoutY="23.0" prefHeight="128.0" prefWidth="226.0">
+                           <children>
+                              <Text fill="WHITE" layoutX="19.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="left-form" text="Ordini Da Gestire" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Georgia" size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="ordiniDaGestire" fill="WHITE" layoutX="178.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="37.60003662109375">
+                                 <font>
+                                    <Font name="Georgia" size="24.0" />
+                                 </font>
+                              </Text>
+                              <FontAwesomeIcon fill="WHITE" glyphName="PENCIL" layoutX="26.0" layoutY="59.0" size="3em" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="ombre" />
+                              <String fx:value="campi" />
+                           </styleClass>
+                        </Pane>
+                        <Pane layoutX="16.0" layoutY="181.0" prefHeight="382.0" prefWidth="643.0" stylesheets="@Stili/HomeStyle.css" AnchorPane.bottomAnchor="15.000000000000114" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0">
+                           <children>
+                              <Text fill="WHITE" layoutX="238.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ultimi Ordini Gestiti">
+                                 <font>
+                                    <Font name="Georgia" size="18.0" />
+                                 </font>
+                              </Text>
+                              <TableView fx:id="TabellaOrdiniHome" layoutX="23.0" layoutY="44.0" prefHeight="314.0" prefWidth="594.0">
+                                 <columns>
+                                    <TableColumn fx:id="IDOrdineHome" prefWidth="64.79999160766602" text="ID_Ordine" />
+                                    <TableColumn fx:id="CFhome" prefWidth="85.5999755859375" text="CF" />
+                                    <TableColumn fx:id="DATAHome" prefWidth="78.39994812011719" text="Tipologia" />
+                                    <TableColumn fx:id="TIPOHome" prefWidth="84.0" text="Data" />
+                                    <TableColumn fx:id="IDMERHome" prefWidth="88.0" text="ID_Merce" />
+                                    <TableColumn fx:id="QUANTHome" prefWidth="54.4000244140625" text="Quantità" />
+                                    <TableColumn fx:id="DESCHome" prefWidth="138.39996337890625" text="Descrizione" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                           <styleClass>
+                              <String fx:value="campi" />
+                              <String fx:value="ombre" />
+                           </styleClass>
+                        </Pane>
+                        <Pane layoutX="381.0" layoutY="23.0" prefHeight="127.0" prefWidth="232.0" stylesheets="@Stili/HomeStyle.css">
+                           <children>
+                              <Text fill="WHITE" layoutX="13.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ordini gestiti " textAlignment="CENTER" wrappingWidth="204.53677368164062">
+                                 <font>
+                                    <Font name="Georgia" size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="OrdiniGestiti" fill="WHITE" layoutX="180.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="37.60003662109375">
+                                 <font>
+                                    <Font name="Georgia" size="24.0" />
+                                 </font>
+                              </Text>
+                              <FontAwesomeIcon fill="WHITE" glyphName="BOOK" layoutX="14.0" layoutY="61.0" size="4em" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="campi" />
+                              <String fx:value="ombre" />
+                           </styleClass>
+                        </Pane>
+                     </children>
+                     <styleClass>
+                        <String fx:value="ombre" />
+                        <String fx:value="left-form" />
+                        <String fx:value="right-form" />
+                     </styleClass>
+                  </AnchorPane>
+                  <fx:include fx:id="patternProfilo" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" source="Profilo.fxml" stylesheets="@Stili/HomeStyle.css" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                  <fx:include fx:id="patternVisualizzaOrdini" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" source="VisualizzaOrdini.fxml" stylesheets="@Stili/HomeStyle.css" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                  <fx:include fx:id="patternVisualizzaReport" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" source="VisualizzaReport.fxml" stylesheets="@Stili/HomeStyle.css" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                  <fx:include fx:id="patternCreaSpedizione" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" source="CreaSpedizione.fxml" stylesheets="@Stili/HomeStyle.css" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
    </center>
 </BorderPane>

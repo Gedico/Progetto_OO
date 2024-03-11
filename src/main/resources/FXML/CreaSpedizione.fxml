@@ -1,35 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import java.lang.String?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.progetto_oo.Controllers.Controller">
-   <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #317fa2;" BorderPane.alignment="CENTER">
-         <children>
-            <Text fill="WHITE" layoutX="51.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unina">
-               <font>
-                  <Font name="Georgia" size="36.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" layoutX="34.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delivery">
-               <font>
-                  <Font name="Georgia" size="36.0" />
-               </font>
-            </Text>
-            <Button fx:id="GoHome" layoutX="37.0" layoutY="190.0" mnemonicParsing="false" onAction="#GoHomeOnAction" prefHeight="26.0" prefWidth="125.0" style="-fx-background-color: ffffff;" text="Home" />
-            <Button fx:id="GoProfilo" layoutX="37.0" layoutY="450.0" mnemonicParsing="false" onAction="#GoProfiloOnAction" prefHeight="26.0" prefWidth="125.0" style="-fx-background-color: ffffff;" text="Profilo" />
-            <Button fx:id="GoLogout" layoutX="37.0" layoutY="512.0" mnemonicParsing="false" onAction="#GoLogoutOnAction" prefHeight="26.0" prefWidth="125.0" style="-fx-background-color: ffffff;" text="Logout" />
-            <Line endX="100.0" layoutX="100.0" layoutY="416.0" startX="-100.0" stroke="WHITE" />
-         </children>
-      </AnchorPane>
-   </left>
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </center>
-</BorderPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="761.0" stylesheets="@Stili/HomeStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <styleClass>
+      <String fx:value="right-form" />
+      <String fx:value="ombre" />
+   </styleClass>
+   <children>
+      <Text layoutX="339.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CreaSpedizione" />
+   </children>
+</AnchorPane>
