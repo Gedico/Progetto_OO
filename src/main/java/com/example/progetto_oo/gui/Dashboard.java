@@ -10,7 +10,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class Home extends Application {
+public class Dashboard extends Application {
 
     private double xOffset = 0;
     private double yOffset = 0;
@@ -23,7 +23,7 @@ public class Home extends Application {
     public void creaFinestraHome(Stage homeStage) throws IOException {
         // Creazione della finestra "Home"
         homeStage.initStyle(StageStyle.UNDECORATED); // creo la finestra senza bordi e bottoni di chiusura e riduzione
-        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/FXML/Homepage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Dashboard.class.getResource("/FXML/Homepage.fxml"));
         BorderPane root = fxmlLoader.load();
 
         // Gestione degli eventi del mouse per rendere la finestra trascinabile
@@ -43,7 +43,4 @@ public class Home extends Application {
         homeStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 }

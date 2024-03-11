@@ -2,8 +2,6 @@ package com.example.progetto_oo.Controllers;
 
 import com.example.progetto_oo.Database.Connessione;
 import com.example.progetto_oo.Database.OperatoreDao;
-import com.example.progetto_oo.Database.OrdiniDao;
-import com.example.progetto_oo.gui.Login;
 import com.example.progetto_oo.gui.*;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -23,7 +21,7 @@ public class LoginController {
     public Button Chiudi;
     Connessione connessione = new Connessione();
     OperatoreDao operatoreDao = new OperatoreDao(connessione);
-    Home home = new Home();
+    Dashboard home = new Dashboard();
     ProfiloController profiloController = new ProfiloController();
 
 

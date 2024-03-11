@@ -38,9 +38,8 @@ public class HomeController implements Initializable {
     public AnchorPane patternVisualizzaReport;
     public Button goHome;
     public AnchorPane patternVisualizzaOrdini;
-    public AnchorPane patternProfilo;
     public AnchorPane patternCreaSpedizione;
-      public TableView<Ordine> TabellaOrdiniHome;
+    public TableView<Ordine> TabellaOrdiniHome;
     public TableColumn IDOrdineHome;
     public TableColumn CFhome;
     public TableColumn DATAHome;
@@ -89,33 +88,23 @@ public class HomeController implements Initializable {
     }
 
     public void CambiaVisione(ActionEvent event) {//Metodo per poter cambiare "pagina"
-        if(event.getSource() == GoProfilo){
+         if(event.getSource() == GoVisualizzaOrdini){
             patternHome.setVisible(false);
-            patternProfilo.setVisible(true);
-            patternCreaSpedizione.setVisible(false);
-            patternVisualizzaOrdini.setVisible(false);
-            patternVisualizzaReport.setVisible(false);
-        }else if(event.getSource() == GoVisualizzaOrdini){
-            patternHome.setVisible(false);
-            patternProfilo.setVisible(false);
             patternCreaSpedizione.setVisible(false);
             patternVisualizzaOrdini.setVisible(true);
             patternVisualizzaReport.setVisible(false);
         }else if(event.getSource() == GoCreaSpedizione){
             patternHome.setVisible(false);
-            patternProfilo.setVisible(false);
             patternCreaSpedizione.setVisible(true);
             patternVisualizzaOrdini.setVisible(false);
             patternVisualizzaReport.setVisible(false);
     }   else if(event.getSource() == GoVisualizzaReport){
             patternHome.setVisible(false);
-            patternProfilo.setVisible(false);
             patternCreaSpedizione.setVisible(false);
             patternVisualizzaOrdini.setVisible(false);
             patternVisualizzaReport.setVisible(true);
         }else if(event.getSource() == goHome){
             patternHome.setVisible(true);
-            patternProfilo.setVisible(false);
             patternCreaSpedizione.setVisible(false);
             patternVisualizzaOrdini.setVisible(false);
             patternVisualizzaReport.setVisible(false);

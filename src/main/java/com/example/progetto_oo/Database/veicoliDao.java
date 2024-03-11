@@ -19,7 +19,6 @@ public class veicoliDao {
         }
 
 }
-
     public List<Veicolo> getVeicoliPerOrdine(String data) {
         List<Veicolo> veicoli = new ArrayList<>();
 
@@ -53,8 +52,7 @@ public class veicoliDao {
         }
         return veicoli;
     }
-
-    public boolean verificaEsistenzaVeicolo(String cf) {
+    public boolean verificaEsistenzaVeicolo(String targa) {
         boolean VeicoloEsistente = false;
 
         if (connection == null) {
@@ -65,7 +63,7 @@ public class veicoliDao {
         String query = "SELECT COUNT(*) AS count FROM veicoli WHERE targa = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, cf);
+            preparedStatement.setString(1, targa);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
@@ -78,8 +76,6 @@ public class veicoliDao {
         }
         return VeicoloEsistente;
     }
-
-
     public boolean verificaDisponibilitàVeicolo(String targa , String data) {
         boolean veicoloDisponibile = false;
 

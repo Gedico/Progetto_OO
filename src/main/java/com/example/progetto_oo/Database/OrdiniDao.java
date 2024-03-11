@@ -73,6 +73,7 @@ public class OrdiniDao {
                 "FROM ordine AS o\n" +
                 "JOIN specifiche AS s ON o.id_ordine = s.id_ordine\n" +
                 "JOIN merce AS m ON m.id_merce = s.id_merce\n" +
+                "where elaborato = true\n" +
                 "ORDER BY dataordinato DESC\n" +
                 "LIMIT 10;\n";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -225,7 +226,6 @@ public class OrdiniDao {
         }
         return clienteEsiste;
     }
-
     public boolean creaSpedizione( int idOrdine, String targa, String data) {
 
         if (connection == null) {
