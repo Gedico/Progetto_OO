@@ -26,10 +26,13 @@
             </Text>
             <TableView fx:id="TabellaOrdineMenoProdotti" layoutX="11.0" layoutY="39.0" prefHeight="58.0" prefWidth="632.0">
               <columns>
-                <TableColumn prefWidth="124.79999160766602" text="ID_Ordine" />
-                <TableColumn prefWidth="188.7999725341797" text="CF" />
-                  <TableColumn prefWidth="175.20001220703125" text="Data" />
-                  <TableColumn prefWidth="144.79998779296875" text="Tipolgia" />
+                <TableColumn fx:id="id_ordineMeno" prefWidth="93.59997940063477" text="ID_Ordine" />
+                <TableColumn fx:id="cfMeno" prefWidth="118.4000244140625" text="CF" />
+                  <TableColumn fx:id="dataMeno" prefWidth="75.19999694824219" text="Data" />
+                  <TableColumn fx:id="TipoMeno" prefWidth="96.0" text="Tipolgia" />
+                  <TableColumn fx:id="ID_MerceMeno" text="ID_Merce" />
+                  <TableColumn fx:id="QuantitàMeno" prefWidth="60.0" text="Quantità" />
+                  <TableColumn fx:id="DescrizioneMeno" prefWidth="107.20001220703125" text="Descrizione" />
               </columns>
             </TableView>
             <FontAwesomeIcon fill="WHITE" glyphName="MINUS" layoutX="11.0" layoutY="29.0" size="1.8em" />
@@ -43,12 +46,15 @@
                </font>
             </Text>
             <FontAwesomeIcon fill="WHITE" glyphName="PLUS" layoutX="11.0" layoutY="29.0" size="1.8em" />
-            <TableView fx:id="TabellaOrdinePiuProdotti" layoutX="9.0" layoutY="39.0" prefHeight="58.0" prefWidth="632.0">
+            <TableView fx:id="TabellaOrdinepiuProdotti" layoutX="9.0" layoutY="39.0" prefHeight="58.0" prefWidth="632.0">
                <columns>
-                  <TableColumn prefWidth="124.79999160766602" text="ID_Ordine" />
-                  <TableColumn prefWidth="188.7999725341797" text="CF" />
-                  <TableColumn prefWidth="175.20001220703125" text="Data" />
-                  <TableColumn prefWidth="144.79998779296875" text="Tipolgia" />
+                  <TableColumn fx:id="id_ordinePiù" prefWidth="93.59997940063477" text="ID_Ordine" />
+                  <TableColumn fx:id="cfPiù" prefWidth="118.4000244140625" text="CF" />
+                  <TableColumn fx:id="DataPiù" prefWidth="75.19999694824219" text="Data" />
+                  <TableColumn fx:id="tipologiaPiù" prefWidth="96.0" text="Tipolgia" />
+                  <TableColumn fx:id="ID_MercePiù" text="ID_Merce" />
+                  <TableColumn fx:id="QuantitàPiù" prefWidth="60.0" text="Quantità" />
+                  <TableColumn fx:id="DescrizionePiù" prefWidth="107.20001220703125" text="Descrizione" />
                </columns>
             </TableView>
          </children>
@@ -61,27 +67,27 @@
                </font>
             </Text>
             <FontAwesomeIcon fill="WHITE" glyphName="PENCIL" layoutX="22.0" layoutY="35.0" size="2em" />
-            <Text fx:id="MediaOrdiniMensili" fill="WHITE" layoutX="156.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="MediaOrdiniMensili" fill="WHITE" layoutX="117.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="61.60003662109375">
                <font>
                   <Font name="Georgia" size="24.0" />
                </font>
             </Text>
          </children>
       </Pane>
-      <MenuButton fx:id="MenuReport" layoutX="17.0" layoutY="38.0" mnemonicParsing="false" onAction="#SceltaMeseReport" popupSide="RIGHT" styleClass="pasButton" text="Seleziona Mese" textFill="WHITE">
+      <MenuButton fx:id="MenuReport" layoutX="17.0" layoutY="38.0" mnemonicParsing="false" popupSide="RIGHT" styleClass="pasButton" text="Seleziona Mese" textFill="WHITE">
         <items>
-          <MenuItem fx:id="GennaioReport" mnemonicParsing="false" text="Gennaio" />
-          <MenuItem fx:id="FebbraioReport" mnemonicParsing="false" text="Febbraio" />
-            <MenuItem fx:id="MarzoReport" mnemonicParsing="false" text="Marzo" />
-            <MenuItem fx:id="AprileReport" mnemonicParsing="false" text="Aprile" />
-            <MenuItem fx:id="MaggioReport" mnemonicParsing="false" text="Maggio" />
-            <MenuItem fx:id="GiugnoReport" mnemonicParsing="false" text="Giugno" />
-            <MenuItem fx:id="LuglioReport" mnemonicParsing="false" text="Luglio" />
-            <MenuItem fx:id="AgostoReport" mnemonicParsing="false" text="Agosto" />
-            <MenuItem fx:id="SettembreReport" mnemonicParsing="false" text="settembre" />
-            <MenuItem fx:id="OttobreReport" mnemonicParsing="false" text="Ottobre" />
-            <MenuItem fx:id="NovembreReport" mnemonicParsing="false" text="Novembre" />
-            <MenuItem fx:id="DicembreReport" mnemonicParsing="false" text="Dicembre" />
+          <MenuItem fx:id="GennaioReport" mnemonicParsing="false" onAction="#GennaioReportOnAction" text="Gennaio" />
+          <MenuItem fx:id="FebbraioReport" mnemonicParsing="false" onAction="#FebbraioReportOnAction" text="Febbraio" />
+            <MenuItem fx:id="MarzoReport" mnemonicParsing="false" onAction="#MarzoReportOnAction" text="Marzo" />
+            <MenuItem fx:id="AprileReport" mnemonicParsing="false" onAction="#AprileReportOnAction" text="Aprile" />
+            <MenuItem fx:id="MaggioReport" mnemonicParsing="false" onAction="#MaggioReportOnAction" text="Maggio" />
+            <MenuItem fx:id="GiugnoReport" mnemonicParsing="false" onAction="#GiugnoReportOnAction" text="Giugno" />
+            <MenuItem fx:id="LuglioReport" mnemonicParsing="false" onAction="#LuglioReportOnAction" text="Luglio" />
+            <MenuItem fx:id="AgostoReport" mnemonicParsing="false" onAction="#AgostoReportOnAction" text="Agosto" />
+            <MenuItem fx:id="SettembreReport" mnemonicParsing="false" onAction="#SettembreReportOnAction" text="settembre" />
+            <MenuItem fx:id="OttobreReport" mnemonicParsing="false" onAction="#OttobreReportOnAction" text="Ottobre" />
+            <MenuItem fx:id="NovembreReport" mnemonicParsing="false" onAction="#NovembreReportOnAction" text="Novembre" />
+            <MenuItem fx:id="DicembreReport" mnemonicParsing="false" onAction="#DicembreReportOnAction" text="Dicembre" />
         </items>
          <font>
             <Font name="Georgia" size="14.0" />

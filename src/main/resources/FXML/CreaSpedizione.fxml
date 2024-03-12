@@ -2,6 +2,7 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -86,11 +87,6 @@
             <String fx:value="textfield" />
             <String fx:value="ombre" />
          </styleClass></TextField>
-      <TextField fx:id="DataSpedizione" layoutX="22.0" layoutY="240.0" promptText="Data Spedizione">
-         <styleClass>
-            <String fx:value="textfield" />
-            <String fx:value="ombre" />
-         </styleClass></TextField>
       <Button fx:id="CercaVeicoliSpedizioe" layoutX="207.0" layoutY="239.0" mnemonicParsing="false" onAction="#CercaVeicoliOnAction" text="Creca Veicoli">
          <font>
             <Font name="Georgia" size="14.0" />
@@ -111,5 +107,6 @@
             <String fx:value="ombre" />
          </styleClass>
       </Button>
+      <DatePicker fx:id="SelezionaDataSpedizione" editable="false" layoutX="17.0" layoutY="239.0" prefHeight="25.0" prefWidth="169.0" promptText="Data Spedizione" styleClass="textfield" />
    </children>
 </AnchorPane>

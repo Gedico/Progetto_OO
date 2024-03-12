@@ -255,5 +255,111 @@ public class OrdiniDao {
             return false;
         }
     }
+    public List<Ordine> getOrdineConMenoProdottiQuestoMese(int mese) {
+        List<Ordine> ordini = new ArrayList<>();
+
+        if (connection == null) {
+            Alerts.mostraMessaggioErrore("Errore", "Errore", "La connessione al database non è stata stabilita correttamente.");
+            return ordini;
+        }
+
+        // Query per ottenere l'ordine con il minor numero di prodotti
+        String query = "SELECT o.id_ordine, o.cf, o.dataordinato, o.tipologia, m.id_merce, s.quantità, m.descrizione\n" +
+                "FROM ordine AS o\n" +
+                "JOIN specifiche AS s ON o.id_ordine = s.id_ordine\n" +
+                "JOIN merce AS m ON m.id_merce = s.id_merce\n" +
+                "WHERE o.elaborato = true AND EXTRACT(MONTH FROM o.dataordinato) = ?\n" +
+                "GROUP BY o.id_ordine, o.cf, o.dataordinato, o.tipologia, m.id_merce, s.quantità, m.descrizione\n" +
+                "ORDER BY COUNT(quantità) ASC\n" +
+                "LIMIT 1";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, mese);
+
+            // Esegui la query e ottieni i risultati
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Ordine ordine = new Ordine(
+                            resultSet.getInt("id_ordine"),
+                            resultSet.getString("cf"),
+                            resultSet.getString("dataordinato"),
+                            resultSet.getString("tipologia"),
+                            resultSet.getString("id_merce"),
+                            resultSet.getInt("quantità"),
+                            resultSet.getString("descrizione"));
+                    ordini.add(ordine);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ordini;
+    }
+    public List<Ordine> getOrdineConPiùProdottiQuestoMese(int mese) {
+        List<Ordine> ordini = new ArrayList<>();
+
+        if (connection == null) {
+            Alerts.mostraMessaggioErrore("Errore", "Errore", "La connessione al database non è stata stabilita correttamente.");
+            return ordini;
+        }
+
+        // Query per ottenere l'ordine con il minor numero di prodotti
+        String query = "SELECT o.id_ordine, o.cf, o.dataordinato, o.tipologia, m.id_merce, s.quantità, m.descrizione\n" +
+                "FROM ordine AS o\n" +
+                "JOIN specifiche AS s ON o.id_ordine = s.id_ordine\n" +
+                "JOIN merce AS m ON m.id_merce = s.id_merce\n" +
+                "WHERE o.elaborato = true AND EXTRACT(MONTH FROM o.dataordinato) = ?\n" +
+                "GROUP BY o.id_ordine, o.cf, o.dataordinato, o.tipologia, m.id_merce, s.quantità, m.descrizione\n" +
+                "ORDER BY quantità desc\n" +
+                "LIMIT 1";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, mese);
+
+            // Esegui la query e ottieni i risultati
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Ordine ordine = new Ordine(
+                            resultSet.getInt("id_ordine"),
+                            resultSet.getString("cf"),
+                            resultSet.getString("dataordinato"),
+                            resultSet.getString("tipologia"),
+                            resultSet.getString("id_merce"),
+                            resultSet.getInt("quantità"),
+                            resultSet.getString("descrizione"));
+                    ordini.add(ordine);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ordini;
+    }
+    public int getNumeroOrdiniPerMese(int mese) throws SQLException {
+
+        if (connection == null) {
+            Alerts.mostraMessaggioErrore("Errore", "Errore", "La connessione al database non è stata stabilita correttamente.");
+            return 0;
+        }
+
+        String query = "SELECT COUNT(*) AS num_ordini FROM ordine WHERE elaborato = true AND EXTRACT(MONTH FROM dataordinato) = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, mese);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt("num_ordini");
+                }
+            }
+        }
+
+        return 0;  // Ritorna 0 se non ci sono ordini per il mese specificato
+    }
+
+
+
 
 }

@@ -4,16 +4,22 @@ import com.example.progetto_oo.Database.Connessione;
 import com.example.progetto_oo.Database.OperatoreDao;
 import com.example.progetto_oo.gui.*;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class LoginController {
-    private String operatore;
+public class LoginController implements Initializable {
+    public ImageView Logo;
     public TextField Username;
     public PasswordField Password;
     public Button Login;
@@ -43,6 +49,33 @@ public class LoginController {
     public void ChiudiFinestraLogin(ActionEvent event) {
         Stage stage = (Stage) Chiudi.getScene().getWindow();
         stage.close();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+            try {
+                // Imposta il percorso dell'immagine
+                String imagePath = "/Immagini/Logo.png";
+
+                // Utilizza ClassLoader per ottenere l'input stream
+                InputStream inputStream = getClass().getResourceAsStream(imagePath);
+
+                // Verifica se l'input stream è nullo
+                if (inputStream != null) {
+                    // Crea un oggetto Image
+                    Image image = new Image(inputStream);
+
+                    // Imposta l'immagine nell'ImageView
+                    Logo.setImage(image);
+                } else {
+                    System.out.println("Input stream dell'immagine non trovato.");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
     }
 }
 

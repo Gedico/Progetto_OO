@@ -18,6 +18,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+import static java.lang.System.out;
+
 public class
 VisualizzaOrdiniController {
 
@@ -37,10 +39,10 @@ VisualizzaOrdiniController {
     public Button cercaPerData;
     public Button cercaPerUtente;
     public TextField utenteVisualizza;
-    public TextField dataInizio;
-    public TextField dataFine;
     public Text erroreRicercaPerData;
     public Text erroreRicercaPerUtente;
+    public DatePicker SelezionaDataInizio;
+    public DatePicker SelezionaDataFine;
     Connessione connessione = new Connessione();
     OrdiniDao ordiniDao = new OrdiniDao(connessione);
     ClienteDao clienteDao = new ClienteDao(connessione);
@@ -54,13 +56,12 @@ VisualizzaOrdiniController {
             CercaPerData.setVisible(true);
         }
     }
-
     public void riempiTabellaPerUtente() {
         // Ottieni la lista degli ultimi dieci ordini
         List<Ordine> ultimiDieciOrdini = ordiniDao.cercaInOrdiniPerCliente(utenteVisualizza.getText());
 
         // Stampa di debug
-        System.out.println("Numero di ordini ottenuti: " + ultimiDieciOrdini.size());
+        out.println("Numero di ordini ottenuti: " + ultimiDieciOrdini.size());
 
         // Crea le colonne della tabella
        idOrdineVisOrdine.setCellValueFactory(new PropertyValueFactory<>("codOrdine"));
@@ -75,15 +76,14 @@ VisualizzaOrdiniController {
         tabellaRicercaOrdini.getItems().setAll(ultimiDieciOrdini);
 
         // Stampa di debug
-        System.out.println("Numero di righe nella tabella: " + tabellaRicercaOrdini.getItems().size());
+        out.println("Numero di righe nella tabella: " + tabellaRicercaOrdini.getItems().size());
     }
-
     public void riempiTabellaPerData() {
         // Ottieni la lista degli ultimi dieci ordini
-        List<Ordine> ultimiDieciOrdini = ordiniDao.cercaInOrdiniPerDate(dataInizio.getText(), dataFine.getText());
+        List<Ordine> ultimiDieciOrdini = ordiniDao.cercaInOrdiniPerDate(String.valueOf(SelezionaDataInizio.getValue()), String.valueOf(SelezionaDataFine.getValue()));
 
         // Stampa di debug
-        System.out.println("Numero di ordini ottenuti: " + ultimiDieciOrdini.size());
+        out.println("Numero di ordini ottenuti: " + ultimiDieciOrdini.size());
 
         // Crea le colonne della tabella
         idOrdineVisOrdine.setCellValueFactory(new PropertyValueFactory<>("codOrdine"));
@@ -98,35 +98,40 @@ VisualizzaOrdiniController {
         tabellaRicercaOrdini.getItems().setAll(ultimiDieciOrdini);
 
         // Stampa di debug
-        System.out.println("Numero di righe nella tabella: " + tabellaRicercaOrdini.getItems().size());
+        out.println("Numero di righe nella tabella: " + tabellaRicercaOrdini.getItems().size());
     }
-
     public void cercaPerDataOnAction(ActionEvent event) {
         erroreRicercaPerData.setText("");
 
-        String dataInizioText = dataInizio.getText();
-        String dataFineText = dataFine.getText();
+        LocalDate dataOdierna = LocalDate.now();
 
-        if (dataInizioText.isEmpty() || dataFineText.isEmpty()) {
-            erroreRicercaPerData.setText("Inserire entrambe le date");
-        } else {
-            try {
+        try {
+            String dataInizioText = String.valueOf(SelezionaDataInizio.getValue());
+            System.out.println(dataInizioText);
+            String dataFineText = String.valueOf(SelezionaDataFine.getValue());
+            System.out.println(dataFineText);
+
+            if (SelezionaDataInizio.getValue() == null || SelezionaDataFine.getValue() == null) {
+                erroreRicercaPerData.setText("Riempire tutti i campi");
+            } else {
+
                 LocalDate inizio = LocalDate.parse(dataInizioText, DateTimeFormatter.ISO_LOCAL_DATE);
                 LocalDate fine = LocalDate.parse(dataFineText, DateTimeFormatter.ISO_LOCAL_DATE);
 
                 if (inizio.isAfter(fine)) {
                     Alerts.mostraMessaggioAvvertimento("Errore", "Errore", "La data di inizio non può essere successiva alla data di fine");
-
+                } else if (fine.isAfter(dataOdierna)) {
+                    Alerts.mostraMessaggioAvvertimento("Errore", "Errore", "La data di fine non può essere successiva alla data odierna");
+                } else if (inizio.isEqual(fine)) {
+                    Alerts.mostraMessaggioAvvertimento("Errore", "Errore", "Le date di inizio e fine non possono essere uguali");
                 } else {
                     // Le date sono valide, puoi procedere con la ricerca
                     riempiTabellaPerData();
-                }
-            } catch (DateTimeParseException e) {
-                Alerts.mostraMessaggioAvvertimento("Errore", "Errore", "Formato data non valido. Utilizzare anno-mese-gg");
+                }}
+            } catch(DateTimeParseException e){
+                Alerts.mostraMessaggioAvvertimento("Errore", "Errore", "Formato data non valido.");
             }
         }
-    }
-
     public void CercaPerUtenteOnAction(ActionEvent event) {
         erroreRicercaPerUtente.setText("");
         if (utenteVisualizza.getText().isEmpty()) {
@@ -137,15 +142,15 @@ VisualizzaOrdiniController {
 
         }
     }
-
     public void resetUtenteOnAction(ActionEvent event) {
+        erroreRicercaPerUtente.setText("");
         utenteVisualizza.clear();
         tabellaRicercaOrdini.getItems().clear();
     }
-
     public void resetDataOnAction(ActionEvent event) {
-        dataInizio.clear();
-        dataFine.clear();
+        erroreRicercaPerData.setText("");
+        SelezionaDataInizio.setValue(null);
+        SelezionaDataFine.setValue(null);
         tabellaRicercaOrdini.getItems().clear();
     }
 }
