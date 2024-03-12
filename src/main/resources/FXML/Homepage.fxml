@@ -15,10 +15,6 @@
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="left-form" stylesheets="@Stili/HomeStyle.css" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="GoProfilo" layoutX="38.0" layoutY="430.0" mnemonicParsing="false" onAction="#CambiaVisione" prefHeight="26.0" prefWidth="125.0" text="Profilo">
-               <graphic>
-                  <FontAwesomeIcon fill="WHITE" glyphName="USER" size="1.2em" />
-               </graphic></Button>
             <Button fx:id="GoVisualizzaReport" layoutX="32.0" layoutY="372.0" mnemonicParsing="false" onAction="#CambiaVisione" prefHeight="28.0" prefWidth="134.0" text="Reports" textAlignment="CENTER">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="PENCIL" />
@@ -164,7 +160,6 @@
                         <String fx:value="right-form" />
                      </styleClass>
                   </AnchorPane>
-                  <fx:include fx:id="patternProfilo" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" source="Profilo.fxml" stylesheets="@Stili/HomeStyle.css" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
                   <fx:include fx:id="patternVisualizzaOrdini" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" source="VisualizzaOrdini.fxml" stylesheets="@Stili/HomeStyle.css" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
                   <fx:include fx:id="patternVisualizzaReport" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" source="VisualizzaReport.fxml" stylesheets="@Stili/HomeStyle.css" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
                   <fx:include fx:id="patternCreaSpedizione" layoutX="14.0" layoutY="14.0" prefHeight="578.0" prefWidth="663.0" source="CreaSpedizione.fxml" stylesheets="@Stili/HomeStyle.css" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />

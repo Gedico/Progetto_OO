@@ -2,24 +2,15 @@ package com.example.progetto_oo.Controllers;
 
 import com.example.progetto_oo.Alerts.Alerts;
 import com.example.progetto_oo.Database.*;
-import com.example.progetto_oo.gui.Home;
-import com.example.progetto_oo.gui.Login;
-import com.example.progetto_oo.gui.Profilo;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import java.io.IOException;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javafx.event.EventHandler;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
 public class CreaSpedizioneController {
@@ -45,6 +36,7 @@ public class CreaSpedizioneController {
     public TableColumn ID_MagazzinoVeicoli;
     public TableView TabellaVeicoliSpedizione;
     public Button resetSpedizione;
+    public DatePicker SelezionaDataSpedizione;
     Connessione connessione = new Connessione();
     OrdiniDao ordiniDao = new OrdiniDao(connessione);
     veicoliDao veicolidao = new veicoliDao(connessione);
@@ -54,14 +46,14 @@ public class CreaSpedizioneController {
     }
     public void CreaSpedizoneOnAction(ActionEvent event) {
         erroreSceltaVeicolo.setText("");
-        String dataInseritaString = DataSpedizione.getText();
+        String dataInseritaString = SelezionaDataSpedizione.getValue().toString();
         try {
             //converto la stringa in data
             LocalDate dataInserita = LocalDate.parse(dataInseritaString, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
              if (dataInserita.isBefore(LocalDate.now()))
             {Alerts.mostraMessaggioAvvertimento("Errore", "Errore", "La data inserita Deve essere maggiore o uguale a quella odierna");
-            } else if (DataSpedizione.getText().isEmpty()||ID_OrdineField.getText().isEmpty()||TargaField.getText().isEmpty()) {
+            } else if (SelezionaDataSpedizione.getValue()==null||ID_OrdineField.getText().isEmpty()||TargaField.getText().isEmpty()) {
                  erroreSceltaVeicolo.setText("Riempire i campi di ID_Ordine, Targa e Data");
 
              } else if (!veicolidao.verificaEsistenzaVeicolo(TargaField.getText())) {
@@ -70,10 +62,10 @@ public class CreaSpedizioneController {
              } else if (!ordiniDao.verificaEsistenzaOrdine(Integer.parseInt(ID_OrdineField.getText()))){
                  Alerts.mostraMessaggioAvvertimento("Errore", "Errore", "L'ordine non esiste"+ID_OrdineField.getText());
 
-             } else if (!veicolidao.verificaDisponibilitàVeicolo(TargaField.getText(),DataSpedizione.getText())) {
+             } else if (!veicolidao.verificaDisponibilitàVeicolo(TargaField.getText(),SelezionaDataSpedizione.getValue().toString())) {
                     Alerts.mostraMessaggioAvvertimento("Errore", "Errore", "Il veicolo non è disponibile in quella data");
 
-             }else if( ordiniDao.creaSpedizione(Integer.parseInt(ID_OrdineField.getText()),TargaField.getText(),DataSpedizione.getText())){
+             }else if( ordiniDao.creaSpedizione(Integer.parseInt(ID_OrdineField.getText()),TargaField.getText(),SelezionaDataSpedizione.getValue().toString())){
                  Alerts.mostraMessaggioInformazione("Informazione", "Spedizione Creata", "La spedizione è stata creata con successo");
             }else Alerts.mostraMessaggioErrore("Errore", "Errore", "Errore nella creazione della spedizione");
         }
@@ -85,13 +77,13 @@ public class CreaSpedizioneController {
     }
     public void CercaVeicoliOnAction(ActionEvent event) {
         erroreSceltaVeicolo.setText("");
-        String dataInseritaString = DataSpedizione.getText();
+        String dataInseritaString = SelezionaDataSpedizione.getValue().toString();
         try {
             //converto la stringa in data
             LocalDate dataInserita = LocalDate.parse(dataInseritaString, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-            if (DataSpedizione.getText().isEmpty()) {
-                erroreSceltaVeicolo.setText("Riempire i campi di ID_Ordine e Data");
+            if (SelezionaDataSpedizione.getValue().toString().isEmpty()) {
+                erroreSceltaVeicolo.setText("Inserire la data Data");
             }
             else if (dataInserita.isBefore(LocalDate.now()))
             {Alerts.mostraMessaggioAvvertimento("Errore", "Errore", "La data inserita Deve essere maggiore o uguale a quella odierna");
@@ -166,12 +158,12 @@ public class CreaSpedizioneController {
     }
     public void riempiTabellaVeicoli() {
         // Ottieni la lista degli ultimi dieci ordini
-        List<Veicolo> veicoli = veicolidao.getVeicoliPerOrdine( DataSpedizione.getText());
+        List<Veicolo> veicoli = veicolidao.getVeicoliPerOrdine( SelezionaDataSpedizione.getValue().toString());
 
         if (veicoli.isEmpty()) {
             // Nessun veicolo disponibile per l'ordine e la data specificati
             Alerts.mostraMessaggioAvvertimento("Avviso", "Nessun veicolo disponibile",
-                            " Nessun veicolo disponibile nella data " + DataSpedizione.getText());
+                            " Nessun veicolo disponibile nella data " + SelezionaDataSpedizione.getValue().toString());
         } else {
 
             // Stampa di debug
@@ -192,7 +184,7 @@ public class CreaSpedizioneController {
     public void resetSpedizioneOnAction(ActionEvent event) {
         ID_OrdineField.setText("");
         TargaField.setText("");
-        DataSpedizione.setText("");
+        SelezionaDataSpedizione.setValue(null);
         erroreSceltaVeicolo.setText("");
         TabellaOrdiniSpedizione.getItems().clear();
         TabellaVeicoliSpedizione.getItems().clear();
